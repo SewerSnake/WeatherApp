@@ -18,19 +18,20 @@ class City {
     var country : String
     var weather : String
     
+    // temp is reduced by 272.15 to convert it to Celsius
     init(lat: Float,long: Float,temp: Float,city: String,country: String,weather: String) {
         self.lat = lat
-        print(lat)
+        
         self.long = long
-        print(long)
+        
         self.temp = temp - 272.15
-        print(temp)
+        
         self.city = city
-        print(city)
+        
         self.country = country
-        print(country)
+        
         self.weather = weather
-        print(weather)
+        
     }
     
 }

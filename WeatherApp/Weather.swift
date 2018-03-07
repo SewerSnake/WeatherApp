@@ -30,8 +30,6 @@ class Weather {
     
     func retrieveWeather(_ cityToLoad: String) -> City? {
         
-        self.success = false
-        
         let session = URLSession.shared
         
         let weatherRequestURL = NSURL(string: "https://api.openweathermap.org/data/2.5/weather?q=\(cityToLoad)&APPID=\(openWeatherMapAPIKey)")!
@@ -45,37 +43,26 @@ class Weather {
             } else {
                 
                 do {
-                    // Try to convert that data into a Swift dictionary
+                    
                     let weather = try JSONSerialization.jsonObject(
                         with: data!,
                         options: .mutableContainers) as! [String: AnyObject]
                     
-                    // If we made it to this point, we've successfully converted the
-                    // JSON-formatted weather data into a Swift dictionary.
-                    // Let's print its contents to the debug console.
                     self.latitude = weather["coord"]!["lat"]!! as AnyObject
-                    print("Latitude: \(String(describing: self.latitude))")
                     
                     self.longitude = weather["coord"]!["lon"]!! as AnyObject
-                    print("Longitude: \(String(describing: self.longitude))")
                     
                     self.temperature = weather["main"]!["temp"]!! as AnyObject
-                    print("Temperature: \(String(describing: self.temperature))")
                     
                     self.cityName = weather["name"]!
-                    print("City: \(String(describing: self.cityName))")
                     
                     self.country = weather["sys"]!["country"]!! as AnyObject
-                    print("Country: \(String(describing: self.country))")
                     
                     var weatherObject = weather["weather"]![0] as! [String : AnyObject]
                     
                     self.weatherDescription = weatherObject["main"]!
                     
-                    print("Weather ID: \(String(describing: self.weatherDescription))")
-                    
                     self.success = true
-                    print("success set to true!")
                     
                 } catch let jsonError as NSError {
                     
@@ -88,8 +75,10 @@ class Weather {
         
         dataTask.resume()
         
+        repeat {} while (self.success == nil)
+        
         if (self.success)! {
-            print("Entered!")
+            
             let theCity = City(lat: latitude as! Float,long: longitude as! Float,temp: temperature as! Float,city: cityName as! String,country: country as! String,weather: weatherDescription as! String)
             
             return theCity

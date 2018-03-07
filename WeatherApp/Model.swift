@@ -16,7 +16,7 @@ class Model: NSObject {
         let weatherInfo = weather.retrieveWeather(city)
         
         if (weatherInfo != nil) {
-            print("Weird temperature: " + String(describing: weatherInfo?.temp))
+            print("Temperature: " + (weatherInfo?.temp.description)!)
         } else {
             print("nil returned")
         }
