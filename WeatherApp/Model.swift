@@ -10,6 +10,8 @@ import Foundation
 
 class Model: NSObject {
     
+    //var favoriteCities: Array
+    
     func weatherForCity(_ city: String) {
         let weather = Weather()
         
