@@ -10,9 +10,11 @@ import UIKit
 
 class WeatherTableViewController: UITableViewController {
     
+    var model = Model()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        var model = Model()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,7 +31,7 @@ class WeatherTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
-        return 3
+        return model.cityAmount()
     }
 
     

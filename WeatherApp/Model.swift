@@ -10,7 +10,11 @@ import Foundation
 
 class Model: NSObject {
     
-    //var favoriteCities: Array
+    var cities = [City]()
+    
+    func cityAmount() -> Int {
+        return cities.count
+    }
     
     func weatherForCity(_ city: String) {
         let weather = Weather()
@@ -18,7 +22,7 @@ class Model: NSObject {
         let weatherInfo = weather.retrieveWeather(city)
         
         if (weatherInfo != nil) {
-            print("Temperature: " + (weatherInfo?.temp.description)!)
+            cities.append(weatherInfo!)
         } else {
             print("nil returned")
         }

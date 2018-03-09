@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		183A96862052DD2A00854DF2 /* WeatherInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183A96852052DD2A00854DF2 /* WeatherInfoController.swift */; };
 		18713B0F204AD1F800B361AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18713B0E204AD1F800B361AD /* AppDelegate.swift */; };
 		18713B11204AD1F800B361AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18713B10204AD1F800B361AD /* ViewController.swift */; };
 		18713B14204AD1F800B361AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18713B12204AD1F800B361AD /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		183A96852052DD2A00854DF2 /* WeatherInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfoController.swift; sourceTree = "<group>"; };
 		18713B0B204AD1F800B361AD /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18713B0E204AD1F800B361AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18713B10204AD1F800B361AD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				187D7025204E7DF700B24DF7 /* Weather.swift */,
 				18F9257820519DBE00F97E6A /* WeatherTableViewController.swift */,
 				18F9257A20519E5F00F97E6A /* WeatherCell.swift */,
+				183A96852052DD2A00854DF2 /* WeatherInfoController.swift */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 				187D7024204E773500B24DF7 /* Model.swift in Sources */,
 				18F9257920519DBE00F97E6A /* WeatherTableViewController.swift in Sources */,
 				187D7026204E7DF700B24DF7 /* Weather.swift in Sources */,
+				183A96862052DD2A00854DF2 /* WeatherInfoController.swift in Sources */,
 				18F9257B20519E5F00F97E6A /* WeatherCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
