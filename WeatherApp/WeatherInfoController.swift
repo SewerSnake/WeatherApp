@@ -38,13 +38,13 @@ class WeatherInfoController: UIViewController {
     
     var city: City?
     
-    var cityToRetrieve: Int?
+    var cityIndexInMemory: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if model.getCity(cityToRetrieve!) != nil {
-            city = model.getCity(cityToRetrieve!)
+        if model.getCity(cityIndexInMemory!) != nil {
+            city = model.getCity(cityIndexInMemory!)
         }
        
     }

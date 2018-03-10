@@ -24,14 +24,16 @@ class WeatherTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
+    // Only one section is needed.
     override func numberOfSections(in tableView: UITableView) -> Int {
       
         return 1
     }
 
+    // The number of rows is equal to the amount of cities.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       
-        return model.cityAmount()
+        return 3
+        //return model.cityAmount()
     }
 
     
@@ -48,7 +50,10 @@ class WeatherTableViewController: UITableViewController {
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // Provides class WeatherInfoController with the
+    // tapped cell's row number. As the content in the TableView
+    // corresponds to the Array in class Model, this means
+    // that the correct City object is accessed.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "infoSegue" {
             print("Cell tapped!")
@@ -57,7 +62,7 @@ class WeatherTableViewController: UITableViewController {
             
             let pathForTappedCell: IndexPath = self.tableView.indexPathForSelectedRow!
             
-            weatherInfo.cityToRetrieve = pathForTappedCell.row
+            weatherInfo.cityIndexInMemory = pathForTappedCell.row
         }
     }
 }
