@@ -34,9 +34,15 @@ class WeatherInfoController: UIViewController {
     
     let title2 = "Remove from favorites"
     
+    var model = Model()
+    
+    var city: City?
+    
+    var cityToRetrieve: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        city = model.getCity(cityToRetrieve!)
        
     }
 
@@ -48,12 +54,20 @@ class WeatherInfoController: UIViewController {
     // Loads an appropriate image,
     // depending on the weather.
     func loadImage() -> Void {
-        /*switch  {
-        case <#pattern#>:
-            <#code#>
+        print(self.city?.weather ?? "Couldn't find weather decription")
+        
+        switch self.city?.weather {
+        case "sun"?:
+            self.weatherImage.image = UIImage(named: "sunny")
+        case "rain"?:
+            self.weatherImage.image = UIImage(named: "rain")
+        case "thunder"?:
+            self.weatherImage.image = UIImage(named: "thunder")
+        case "snow"?:
+            self.weatherImage.image = UIImage(named: "snow")
         default:
             self.weatherImage.image = UIImage(named: "oops")
-        }*/
+        }
     }
     
     @IBAction func favorite(_ sender: Any) {
