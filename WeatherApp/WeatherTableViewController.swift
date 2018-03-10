@@ -52,6 +52,7 @@ class WeatherTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "infoSegue" {
             print("Cell tapped!")
+            
             var weatherInfo: WeatherInfoController  = segue.destination as! WeatherInfoController
             
             let pathForTappedCell: IndexPath = self.tableView.indexPathForSelectedRow!
@@ -59,6 +60,4 @@ class WeatherTableViewController: UITableViewController {
             weatherInfo.cityToRetrieve = pathForTappedCell.row
         }
     }
-    
-
 }

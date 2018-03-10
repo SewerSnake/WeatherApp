@@ -42,7 +42,10 @@ class WeatherInfoController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        city = model.getCity(cityToRetrieve!)
+        
+        if model.getCity(cityToRetrieve!) != nil {
+            city = model.getCity(cityToRetrieve!)
+        }
        
     }
 
@@ -70,6 +73,9 @@ class WeatherInfoController: UIViewController {
         }
     }
     
+    // Changes the title of the button.
+    // Saves the new state to memory via
+    // the Model class.
     @IBAction func favorite(_ sender: Any) {
         
         if favoriteButton.currentTitle == title1 {

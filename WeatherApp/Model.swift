@@ -16,9 +16,12 @@ class Model: NSObject {
         return cities.count
     }
     
-    func getCity(_ cityToRetrieve: Int) -> City {
-        
-        return cities[cityToRetrieve]
+    func getCity(_ cityToRetrieve: Int?) -> City? {
+        if cityToRetrieve != nil {
+            return cities[cityToRetrieve!]
+        } else {
+            return nil
+        }
     }
     
     func weatherForCity(_ city: String) {
