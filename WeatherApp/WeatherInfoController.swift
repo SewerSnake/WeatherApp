@@ -10,11 +10,29 @@ import UIKit
 
 class WeatherInfoController: UIViewController {
     
+    @IBOutlet weak var cityName: UILabel!
+    
+    @IBOutlet weak var country: UILabel!
+    
+    @IBOutlet weak var weather: UILabel!
+    
+    @IBOutlet weak var temperature: UILabel!
+    
+    @IBOutlet weak var latitude: UILabel!
+    
+    @IBOutlet weak var longitude: UILabel!
+    
+    @IBOutlet weak var recommendation: UILabel!
+    
+    @IBOutlet weak var windSpeed: UILabel!
+    
+    @IBOutlet weak var weatherImage: UIImageView!
+    
     @IBOutlet weak var favoriteButton: UIButton!
     
     let title1 = "Set as favorite"
     
-    let title2 = "Remove as favorite"
+    let title2 = "Remove from favorites"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +43,17 @@ class WeatherInfoController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
+    }
+    
+    // Loads an appropriate image,
+    // depending on the weather.
+    func loadImage() -> Void {
+        /*switch  {
+        case <#pattern#>:
+            <#code#>
+        default:
+            self.weatherImage.image = UIImage(named: "oops")
+        }*/
     }
     
     @IBAction func favorite(_ sender: Any) {
