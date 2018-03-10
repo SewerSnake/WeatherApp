@@ -9,7 +9,13 @@
 import UIKit
 
 class WeatherInfoController: UIViewController {
-
+    
+    @IBOutlet weak var favoriteButton: UIButton!
+    
+    let title1 = "Set as favorite"
+    
+    let title2 = "Remove as favorite"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,15 +27,13 @@ class WeatherInfoController: UIViewController {
         
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func favorite(_ sender: Any) {
+        
+        if favoriteButton.currentTitle == title1 {
+            favoriteButton.setTitle(title2, for: .normal)
+        } else {
+            favoriteButton.setTitle(title1, for: .normal)
+        }
     }
-    */
-
+    
 }

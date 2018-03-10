@@ -10,21 +10,28 @@ import Foundation
 
 class City {
     
+    var favorite: Bool
+    
     var lat : Float
     var long : Float
     var temp : Float
+    var speed : Float
     
     var city : String
     var country : String
     var weather : String
     
     // temp is reduced by 272.15 to convert it to Celsius
-    init(lat: Float,long: Float,temp: Float,city: String,country: String,weather: String) {
+    init(lat: Float,long: Float,temp: Float,speed: Float,city: String,country: String,weather: String) {
+        self.favorite = false
+        
         self.lat = lat
         
         self.long = long
         
         self.temp = temp - 272.15
+        
+        self.speed = speed
         
         self.city = city
         

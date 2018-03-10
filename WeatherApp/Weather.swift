@@ -20,6 +20,8 @@ class Weather {
     
     private var temperature: AnyObject?
     
+    private var speed: AnyObject?
+    
     private var cityName: AnyObject?
     
     private var country: AnyObject?
@@ -54,6 +56,8 @@ class Weather {
                     
                     self.temperature = weather["main"]!["temp"]!! as AnyObject
                     
+                    self.speed = weather["wind"]!["speed"]!! as AnyObject
+                    
                     self.cityName = weather["name"]!
                     
                     self.country = weather["sys"]!["country"]!! as AnyObject
@@ -79,7 +83,7 @@ class Weather {
         
         if (self.success)! {
             
-            let theCity = City(lat: latitude as! Float,long: longitude as! Float,temp: temperature as! Float,city: cityName as! String,country: country as! String,weather: weatherDescription as! String)
+            let theCity = City(lat: latitude as! Float,long: longitude as! Float,temp: temperature as! Float,speed: speed as! Float,city: cityName as! String,country: country as! String,weather: weatherDescription as! String)
             
             return theCity
         } else {
