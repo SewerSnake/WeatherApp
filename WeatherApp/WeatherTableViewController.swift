@@ -37,22 +37,28 @@ class WeatherTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "location", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "location", for: indexPath) as! WeatherCell
 
-        //cell.cityName?.text = "Göteborg"
-        //cell.temperature?.text = "2 grader"
+        cell.cityName?.text = "Göteborg"
+        cell.temperature?.text = "2 grader"
 
         return cell
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "infoSegue" {
+            print("Cell tapped!")
+            var weatherInfo: WeatherInfoController  = segue.destination as! WeatherInfoController
+            
+            let pathForTappedCell: IndexPath = self.tableView.indexPathForSelectedRow!
+            
+            weatherInfo.cityToRetrieve = pathForTappedCell.row
+        }
     }
-    */
+    
 
 }

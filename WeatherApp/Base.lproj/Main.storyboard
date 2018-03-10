@@ -90,7 +90,7 @@
                                 <connections>
                                     <outlet property="cityName" destination="zsA-oA-LnW" id="9LN-bh-XYx"/>
                                     <outlet property="temperature" destination="zZ9-Y6-cEw" id="zOY-q9-lYH"/>
-                                    <segue destination="w2q-4a-YRM" kind="show" id="Dnm-Kn-qWG"/>
+                                    <segue destination="w2q-4a-YRM" kind="show" identifier="infoSegue" id="Dnm-Kn-qWG"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
