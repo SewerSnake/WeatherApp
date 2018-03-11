@@ -20,7 +20,8 @@ class Model: NSObject {
     // Gets a City object for the tapped cell in the TableView.
     // The cells row number corresponds to the index in Array cities.
     func getCity(_ cityToRetrieve: Int?) -> City? {
-        if cityToRetrieve != nil {
+        
+        if cityToRetrieve != nil && cities.isEmpty == false {
             return cities[cityToRetrieve!]
         } else {
             return nil

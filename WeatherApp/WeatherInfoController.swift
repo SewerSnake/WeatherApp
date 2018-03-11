@@ -32,7 +32,7 @@ class WeatherInfoController: UIViewController {
     
     let title1 = "Set as favorite"
     
-    let title2 = "Remove from favorites"
+    let title2 = "Remove favorite"
     
     var model = Model()
     
@@ -42,10 +42,13 @@ class WeatherInfoController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //print("row number: %d",self.cityIndexInMemory!)
         
         if model.getCity(cityIndexInMemory!) != nil {
             city = model.getCity(cityIndexInMemory!)
         }
+        
+        loadImage()
        
     }
 

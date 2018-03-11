@@ -56,7 +56,7 @@ class WeatherTableViewController: UITableViewController {
     // that the correct City object is accessed.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "infoSegue" {
-            print("Cell tapped!")
+            //print("Cell tapped!")
             
             var weatherInfo: WeatherInfoController  = segue.destination as! WeatherInfoController
             
