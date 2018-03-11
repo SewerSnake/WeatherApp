@@ -14,6 +14,15 @@ class Model: NSObject {
     
     var cities = [City]()
     
+    // Loads the saved cities into Array cities.
+    override init() {
+        let preferences: UserDefaults = UserDefaults.standard
+        
+        let data: NSData = preferences.object(forKey: citySaveKey) as! NSData
+        
+        self.cities = NSKeyedUnarchiver.unarchiveObject(with: data as Data) as! [City]
+    }
+    
     // Returns the amount of City objects in the Array
     func cityAmount() -> Int {
         return cities.count
@@ -22,15 +31,25 @@ class Model: NSObject {
     // Adds the city to the end of the Array of cities.
     // Saves the updated Array.
     func addCity(_ city: City) {
-        cities.append(city)
-        save()
+        if self.cities.isEmpty == false {
+            cities.append(city)
+            save()
+        }
     }
     
     // Saves the list of cities via serialization.
     func save() {
-        let preferences: UserDefaults = UserDefaults.standard;
+        let preferences: UserDefaults = UserDefaults.standard
         
-        let data: NSData = NSKeyedArchiver.archivedData(withRootObject: self.cities) as NSData
+        var filteredCities = [City]()
+        
+        for city: City in self.cities {
+            if city.favorite {
+                filteredCities.append(city)
+            }
+        }
+        
+        let data: NSData = NSKeyedArchiver.archivedData(withRootObject: filteredCities) as NSData
         
         preferences.set(data, forKey:citySaveKey)
         
@@ -54,17 +73,20 @@ class Model: NSObject {
     // or false, i.e not a favorite.
     // The opposite value is then saved to memory.
     func toggleFavorite(_ cityToToggle: Int?) {
-        let city: City = cities[cityToToggle!]
         
-        let currentPriority: Bool = city.favorite
-        
-        if currentPriority {
-            cities[cityToToggle!].favorite = false
-        } else {
-            cities[cityToToggle!].favorite = true
+        if cities.isEmpty == false {
+            let city: City = cities[cityToToggle!]
+            
+            let currentPriority: Bool = city.favorite
+            
+            if currentPriority {
+                cities[cityToToggle!].favorite = false
+            } else {
+                cities[cityToToggle!].favorite = true
+            }
+            
+            save()
         }
-        
-        save()
     }
     
     // Creates an instance of class Weather.
