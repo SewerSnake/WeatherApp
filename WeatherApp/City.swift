@@ -8,7 +8,16 @@
 
 import Foundation
 
-class City {
+class City: NSCoding {
+    
+    let keyFavorite: String = "favorite"
+    let keyLatitude: String = "latitude"
+    let keyLongitude: String = "longitude"
+    let keyTemperature: String = "temperature"
+    let keySpeed: String = "speed"
+    let keyCity: String = "city"
+    let keyCountry: String = "country"
+    let keyWeather: String = "weather"
     
     var favorite: Bool
     
@@ -41,4 +50,39 @@ class City {
         
     }
     
+    // Uses serialization to save to memory.
+    func encode(with aCoder: NSCoder) {
+        if self.favorite {
+            aCoder.encode("true", forKey: keyFavorite)
+        } else {
+            aCoder.encode("false", forKey: keyFavorite)
+        }
+        aCoder.encode(self.lat, forKey: keyLatitude)
+        aCoder.encode(self.long, forKey: keyLongitude)
+        aCoder.encode(self.temp, forKey: keyTemperature)
+        aCoder.encode(self.speed, forKey: keySpeed)
+        aCoder.encode(self.city, forKey: keyCity)
+        aCoder.encode(self.country, forKey: keyCountry)
+        aCoder.encode(self.weather, forKey: keyWeather)
+    }
+    
+    // Deserializes from memory.
+    required init?(coder aDecoder: NSCoder) {
+        
+        if (aDecoder.decodeObject(forKey: keyFavorite) as! String) == "true" {
+            self.favorite = true
+        } else {
+            self.favorite = false
+        }
+        
+        self.lat = aDecoder.decodeObject(forKey: keyLatitude) as! Float
+        self.long = aDecoder.decodeObject(forKey: keyLongitude) as! Float
+        self.temp = aDecoder.decodeObject(forKey: keyTemperature) as! Float
+        self.speed = aDecoder.decodeObject(forKey: keySpeed) as! Float
+        
+        self.city = aDecoder.decodeObject(forKey: keyCity) as! String
+        self.country = aDecoder.decodeObject(forKey: keyCountry) as! String
+        self.weather = aDecoder.decodeObject(forKey: keyWeather) as! String
+    }
+
 }
