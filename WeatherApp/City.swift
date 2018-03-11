@@ -52,11 +52,13 @@ class City: NSCoding {
     
     // Uses serialization to save to memory.
     func encode(with aCoder: NSCoder) {
+        
         if self.favorite {
             aCoder.encode("true", forKey: keyFavorite)
         } else {
             aCoder.encode("false", forKey: keyFavorite)
         }
+        
         aCoder.encode(self.lat, forKey: keyLatitude)
         aCoder.encode(self.long, forKey: keyLongitude)
         aCoder.encode(self.temp, forKey: keyTemperature)

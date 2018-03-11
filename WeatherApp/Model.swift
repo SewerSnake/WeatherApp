@@ -10,11 +10,31 @@ import Foundation
 
 class Model: NSObject {
     
+    let citySaveKey: String = "cities"
+    
     var cities = [City]()
     
     // Returns the amount of City objects in the Array
     func cityAmount() -> Int {
         return cities.count
+    }
+    
+    // Adds the city to the end of the Array of cities.
+    // Saves the updated Array.
+    func addCity(_ city: City) {
+        cities.append(city)
+        save()
+    }
+    
+    // Saves the list of cities via serialization.
+    func save() {
+        let preferences: UserDefaults = UserDefaults.standard;
+        
+        let data: NSData = NSKeyedArchiver.archivedData(withRootObject: self.cities) as NSData
+        
+        preferences.set(data, forKey:citySaveKey)
+        
+        preferences.synchronize;
     }
   
     // Gets a City object for the tapped cell in the TableView.
@@ -28,13 +48,23 @@ class Model: NSObject {
         }
     }
     
-    // Load the current value of 'favorite' from memory. This
+    // Load the current value of 'favorite' from memory for
+    // the corresponding city. This boolean value
     // is either true, to symbolize that its a user's favorite,
     // or false, i.e not a favorite.
     // The opposite value is then saved to memory.
     func toggleFavorite(_ cityToToggle: Int?) {
-        //var city: City = cities[cityToToggle!]
+        let city: City = cities[cityToToggle!]
         
+        let currentPriority: Bool = city.favorite
+        
+        if currentPriority {
+            cities[cityToToggle!].favorite = false
+        } else {
+            cities[cityToToggle!].favorite = true
+        }
+        
+        save()
     }
     
     // Creates an instance of class Weather.
@@ -46,7 +76,7 @@ class Model: NSObject {
         let weatherInfo = weather.retrieveWeather(city)
         
         if (weatherInfo != nil) {
-            cities.append(weatherInfo!)
+            addCity(weatherInfo!)
         } else {
             print("nil returned")
         }
