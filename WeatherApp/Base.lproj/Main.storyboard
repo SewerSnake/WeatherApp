@@ -65,26 +65,30 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cityName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsA-oA-LnW">
-                                            <rect key="frame" x="28" y="45" width="72.5" height="21"/>
+                                            <rect key="frame" x="32" y="45" width="74" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="74" id="Fw2-HG-3S8"/>
+                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="75" id="m1Q-Nf-BCo"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="temperature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZ9-Y6-cEw">
-                                            <rect key="frame" x="245.5" y="45" width="94.5" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="temperature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZ9-Y6-cEw">
+                                            <rect key="frame" x="245" y="45" width="98" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="zZ9-Y6-cEw" secondAttribute="trailing" constant="16" id="7lX-J5-J9c"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="zsA-oA-LnW" secondAttribute="bottom" constant="34" id="Csn-Sl-gS8"/>
                                         <constraint firstItem="zsA-oA-LnW" firstAttribute="top" secondItem="TNi-Vl-JoG" secondAttribute="topMargin" constant="34" id="Fem-7g-1Wl"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="zZ9-Y6-cEw" secondAttribute="trailing" constant="19" id="IYP-Ij-aiz"/>
-                                        <constraint firstItem="zsA-oA-LnW" firstAttribute="leading" secondItem="TNi-Vl-JoG" secondAttribute="leadingMargin" constant="12" id="Wsu-9x-mxH"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="zZ9-Y6-cEw" secondAttribute="bottom" constant="34" id="aY4-SD-1hS"/>
+                                        <constraint firstItem="zsA-oA-LnW" firstAttribute="leading" secondItem="TNi-Vl-JoG" secondAttribute="leadingMargin" constant="16" id="f1v-5P-VHo"/>
                                         <constraint firstItem="zZ9-Y6-cEw" firstAttribute="top" secondItem="TNi-Vl-JoG" secondAttribute="topMargin" constant="34" id="g4y-2w-TIe"/>
-                                        <constraint firstItem="zZ9-Y6-cEw" firstAttribute="leading" secondItem="zsA-oA-LnW" secondAttribute="trailing" constant="145" id="s1V-fq-nw0"/>
+                                        <constraint firstItem="zZ9-Y6-cEw" firstAttribute="leading" secondItem="zsA-oA-LnW" secondAttribute="trailing" constant="139" id="s1V-fq-nw0"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
