@@ -14,22 +14,24 @@ class Model: NSObject {
     
     var cities = [City]()
     
-    // Loads the saved cities into Array cities.
+    // Loads the saved cities in memory into array cities.
     override init() {
         let preferences: UserDefaults = UserDefaults.standard
         
-        let data: NSData = preferences.object(forKey: citySaveKey) as! NSData
+        let data: NSData? = preferences.object(forKey: citySaveKey) as? NSData
         
-        self.cities = NSKeyedUnarchiver.unarchiveObject(with: data as Data) as! [City]
+        if data != nil {
+            self.cities = NSKeyedUnarchiver.unarchiveObject(with: data! as Data) as! [City]
+        }
     }
     
-    // Returns the amount of City objects in the Array
+    // Returns the amount of City objects in the array.
     func cityAmount() -> Int {
         return cities.count
     }
     
-    // Adds the city to the end of the Array of cities.
-    // Saves the updated Array.
+    // Adds the city to the end of the array of cities.
+    // Saves the updated array.
     func addCity(_ city: City) {
         if self.cities.isEmpty == false {
             cities.append(city)
@@ -57,7 +59,7 @@ class Model: NSObject {
     }
   
     // Gets a City object for the tapped cell in the TableView.
-    // The cells row number corresponds to the index in Array cities.
+    // The cells row number corresponds to the index in array cities.
     func getCity(_ cityToRetrieve: Int?) -> City? {
         
         if cityToRetrieve != nil && cities.isEmpty == false {
@@ -91,7 +93,7 @@ class Model: NSObject {
     
     // Creates an instance of class Weather.
     // Retrieves a City object for the given city.
-    // Adds it to the Array of cities.
+    // Adds it to the array of cities.
     func weatherForCity(_ city: String) {
         let weather = Weather()
         
@@ -101,6 +103,7 @@ class Model: NSObject {
             addCity(weatherInfo!)
         } else {
             print("nil returned")
+            // Remove this this else statement at the end of the project!
         }
     }
 }
