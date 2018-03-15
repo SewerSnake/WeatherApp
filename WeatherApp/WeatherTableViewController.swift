@@ -14,12 +14,11 @@ class WeatherTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        model.weatherForCity("Gothenburg")
+        model.weatherForCity("Los Angeles")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
     }
 
     // MARK: - Table view data source
@@ -59,13 +58,13 @@ class WeatherTableViewController: UITableViewController {
     // that the correct City object is accessed.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "infoSegue" {
-            //print("Cell tapped!")
             
             var weatherInfo: WeatherInfoController  = segue.destination as! WeatherInfoController
             
             let pathForTappedCell: IndexPath = self.tableView.indexPathForSelectedRow!
             
             weatherInfo.cityIndexInMemory = pathForTappedCell.row
+            weatherInfo.model = model
         }
     }
 }

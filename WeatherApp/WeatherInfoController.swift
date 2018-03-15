@@ -34,7 +34,7 @@ class WeatherInfoController: UIViewController {
     
     let title2 = "Remove favorite"
     
-    var model = Model()
+    var model: Model?
     
     var city: City?
     
@@ -42,11 +42,10 @@ class WeatherInfoController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //print("row number: %d",self.cityIndexInMemory!)
+        print("row number: " + String(self.cityIndexInMemory!))
         
-        if model.getCity(cityIndexInMemory!) != nil {
-            city = model.getCity(cityIndexInMemory!)
-        }
+        city = model?.getCity(cityIndexInMemory!)
+        print("Wind speed: " + String(describing: city?.speed) + " m/s")
         
         loadImage()
        
@@ -60,11 +59,15 @@ class WeatherInfoController: UIViewController {
     // Loads an appropriate image,
     // depending on the weather.
     func loadImage() -> Void {
-        print(self.city?.weather ?? "Couldn't find weather decription")
+        let desc: String? = self.city?.weather
+        if desc != nil {
+            print(desc!)
+        }
         
         switch self.city?.weather {
         case "sun"?:
             self.weatherImage.image = UIImage(named: "sunny")
+        // Add case Clear!
         case "rain"?:
             self.weatherImage.image = UIImage(named: "rain")
         case "thunder"?:
