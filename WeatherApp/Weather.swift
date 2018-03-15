@@ -34,60 +34,62 @@ class Weather {
         
         let session = URLSession.shared
         
-        let weatherRequestURL = NSURL(string: "https://api.openweathermap.org/data/2.5/weather?q=\(cityToLoad)&APPID=\(openWeatherMapAPIKey)")!
-        
-        // The data task retrieves the data via the URL.
-        let dataTask = session.dataTask(with: weatherRequestURL as URL) {
-            (data: Data?, response: URLResponse?, error: Error?) in
-            if let error = error {
-                print("Error:\n\(error)")
-                self.success = false
-            } else {
+        if let safeString = cityToLoad.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+            print(safeString)
+            let weatherRequestURL = NSURL(string: "https://api.openweathermap.org/data/2.5/weather?q=\(safeString)&APPID=\(openWeatherMapAPIKey)")!
+            
+            let dataTask = session.dataTask(with: weatherRequestURL as URL) {
+                (data: Data?, response: URLResponse?, error: Error?) in
                 
-                do {
-                    
-                    let weather = try JSONSerialization.jsonObject(
-                        with: data!,
-                        options: .mutableContainers) as! [String: AnyObject]
-                    
-                    self.latitude = weather["coord"]!["lat"]!! as AnyObject
-                    
-                    self.longitude = weather["coord"]!["lon"]!! as AnyObject
-                    
-                    self.temperature = weather["main"]!["temp"]!! as AnyObject
-                    
-                    self.speed = weather["wind"]!["speed"]!! as AnyObject
-                    
-                    self.cityName = weather["name"]!
-                    
-                    self.country = weather["sys"]!["country"]!! as AnyObject
-                    
-                    var weatherObject = weather["weather"]![0] as! [String : AnyObject]
-                    
-                    self.weatherDescription = weatherObject["main"]!
-                    
-                    self.success = true
-                    
-                } catch let jsonError as NSError {
-                    
-                    print("JSON error description: \(jsonError.description)")
-                    
+                if let error = error {
+                    print("Error:\n\(error)")
                     self.success = false
+                } else {
+                    
+                    do {
+                        
+                        let weather = try JSONSerialization.jsonObject(
+                            with: data!,
+                            options: .mutableContainers) as! [String: AnyObject]
+                        
+                        self.latitude = weather["coord"]!["lat"]!! as AnyObject
+                        
+                        self.longitude = weather["coord"]!["lon"]!! as AnyObject
+                        
+                        self.temperature = weather["main"]!["temp"]!! as AnyObject
+                        
+                        self.speed = weather["wind"]!["speed"]!! as AnyObject
+                        
+                        self.cityName = weather["name"]!
+                        
+                        self.country = weather["sys"]!["country"]!! as AnyObject
+                        print(self.country!)
+                        var weatherObject = weather["weather"]![0] as! [String : AnyObject]
+                        
+                        self.weatherDescription = weatherObject["main"]!
+                        
+                        self.success = true
+                        
+                    } catch let jsonError as NSError {
+                        
+                        print("JSON error description: \(jsonError.description)")
+                        
+                        self.success = false
+                    }
                 }
             }
-        }
-        
-        dataTask.resume()
-        
-        repeat {} while (self.success == nil)
-        
-        if (self.success)! {
             
-            let theCity = City(lat: latitude as! Float,long: longitude as! Float,temp: temperature as! Float,speed: speed as! Float,city: cityName as! String,country: country as! String,weather: weatherDescription as! String)
+            dataTask.resume()
             
-            return theCity
-        } else {
-            return nil
+            repeat {} while (self.success == nil)
+            
+            if (self.success)! {
+                
+                let theCity = City(lat: latitude as! Float,long: longitude as! Float,temp: temperature as! Float,speed: speed as! Float,city: cityName as! String,country: country as! String,weather: weatherDescription as! String)
+                
+                return theCity
+            }
         }
+        return nil
     }
 }

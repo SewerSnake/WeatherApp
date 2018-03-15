@@ -14,7 +14,7 @@ class WeatherTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        model.weatherForCity("Gothenburg")
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,17 +32,20 @@ class WeatherTableViewController: UITableViewController {
 
     // The number of rows is equal to the amount of cities.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
-        //return model.cityAmount()
+        //return 3
+        return model.cityAmount()
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "location", for: indexPath) as! WeatherCell
-
-        cell.cityName?.text = "Göteborg"
-        cell.temperature?.text = "2 grader"
+        
+        let city: City = model.getCity(indexPath.row)!
+        
+        cell.cityName?.text = city.city
+        
+        cell.temperature?.text = String(city.temp) + " °C"
 
         return cell
     }

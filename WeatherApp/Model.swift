@@ -27,16 +27,16 @@ class Model: NSObject {
     
     // Returns the amount of City objects in the array.
     func cityAmount() -> Int {
+        print("Amount of cities in array: " + String(cities.count))
         return cities.count
     }
     
     // Adds the city to the end of the array of cities.
     // Saves the updated array.
     func addCity(_ city: City) {
-        if self.cities.isEmpty == false {
-            cities.append(city)
-            save()
-        }
+        print("City " + city.city + "added!")
+        cities.append(city)
+        save()
     }
     
     // Saves the list of cities via serialization.
@@ -55,7 +55,7 @@ class Model: NSObject {
         
         preferences.set(data, forKey:citySaveKey)
         
-        preferences.synchronize;
+        preferences.synchronize
     }
   
     // Gets a City object for the tapped cell in the TableView.
@@ -63,6 +63,7 @@ class Model: NSObject {
     func getCity(_ cityToRetrieve: Int?) -> City? {
         
         if cityToRetrieve != nil && cities.isEmpty == false {
+            print("City " + cities[cityToRetrieve!].city + " retrieved!")
             return cities[cityToRetrieve!]
         } else {
             return nil
