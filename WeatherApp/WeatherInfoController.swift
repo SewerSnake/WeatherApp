@@ -42,32 +42,34 @@ class WeatherInfoController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("row number: " + String(self.cityIndexInMemory!))
         
         city = model?.getCity(cityIndexInMemory!)
-        print("Wind speed: " + String(describing: city?.speed) + " m/s")
         
         loadImage()
+        
+        loadInfo()
        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
     }
     
     // Loads an appropriate image,
     // depending on the weather.
-    func loadImage() -> Void {
+    func loadImage() {
         let desc: String? = self.city?.weather
         if desc != nil {
             print(desc!)
         }
         
         switch self.city?.weather {
-        case "sun"?:
+        case "sunny"?:
             self.weatherImage.image = UIImage(named: "sunny")
-        // Add case Clear!
+        case "Clear"?:
+            self.weatherImage.image = UIImage(named: "clear")
+        case "Clouds"?:
+            self.weatherImage.image = UIImage(named: "clouds")
         case "rain"?:
             self.weatherImage.image = UIImage(named: "rain")
         case "thunder"?:
@@ -77,6 +79,20 @@ class WeatherInfoController: UIViewController {
         default:
             self.weatherImage.image = UIImage(named: "oops")
         }
+    }
+    
+    // Loads all information regarding
+    // the weather into the approriate
+    // graphical components.
+    func loadInfo() {
+        self.cityName.text = self.city?.city
+        self.country.text = self.city?.country
+        self.weather.text = self.city?.weather
+        
+        self.temperature.text = String(self.city!.temp) + " °C"
+        self.latitude.text = "lat: " + String(self.city!.lat)
+        self.longitude.text = "long: " + String(self.city!.long)
+        self.windSpeed.text = String(self.city!.speed) + " m/s"
     }
     
     // Changes the title of the button.
@@ -89,6 +105,7 @@ class WeatherInfoController: UIViewController {
         } else {
             favoriteButton.setTitle(title1, for: .normal)
         }
+        model?.toggleFavorite(self.cityIndexInMemory!)
     }
     
 }

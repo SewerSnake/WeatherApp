@@ -27,7 +27,7 @@ class Model: NSObject {
     
     // Returns the amount of City objects in the array.
     func cityAmount() -> Int {
-        print("Amount of cities in array: " + String(cities.count))
+        //print("Amount of cities in array: " + String(cities.count))
         return cities.count
     }
     

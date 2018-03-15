@@ -63,7 +63,7 @@ class Weather {
                         self.cityName = weather["name"]!
                         
                         self.country = weather["sys"]!["country"]!! as AnyObject
-                        print(self.country!)
+                       
                         var weatherObject = weather["weather"]![0] as! [String : AnyObject]
                         
                         self.weatherDescription = weatherObject["main"]!

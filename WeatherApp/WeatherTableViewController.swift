@@ -14,7 +14,7 @@ class WeatherTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        model.weatherForCity("Los Angeles")
+        model.weatherForCity("Berlin")
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,6 +64,7 @@ class WeatherTableViewController: UITableViewController {
             let pathForTappedCell: IndexPath = self.tableView.indexPathForSelectedRow!
             
             weatherInfo.cityIndexInMemory = pathForTappedCell.row
+            
             weatherInfo.model = model
         }
     }
