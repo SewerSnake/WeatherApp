@@ -10,6 +10,8 @@ import UIKit
 
 class WeatherCell: UITableViewCell {
     
+    var dataText: String?
+    
     @IBOutlet weak var cityName: UILabel!
     
     @IBOutlet weak var temperature: UILabel!

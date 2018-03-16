@@ -39,6 +39,18 @@ class Model: NSObject {
         save()
     }
     
+    // Returns the names of all cities in the array,
+    // in lowercased letters.
+    func getAllCityNames() -> [String] {
+        var names: [String] = []
+        
+        for city: City in self.cities {
+            names.append(city.city.lowercased())
+        }
+        
+        return names
+    }
+    
     // Saves the list of cities via serialization.
     func save() {
         let preferences: UserDefaults = UserDefaults.standard
@@ -63,7 +75,7 @@ class Model: NSObject {
     func getCity(_ cityToRetrieve: Int?) -> City? {
         
         if cityToRetrieve != nil && cities.isEmpty == false {
-            print("City " + cities[cityToRetrieve!].city + " retrieved!")
+            //print("City " + cities[cityToRetrieve!].city + " retrieved!")
             return cities[cityToRetrieve!]
         } else {
             return nil

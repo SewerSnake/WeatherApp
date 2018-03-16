@@ -8,17 +8,61 @@
 
 import UIKit
 
-class WeatherTableViewController: UITableViewController {
-    
+class WeatherTableViewController: UITableViewController, UISearchResultsUpdating {
+   
     var model = Model()
+    
+    var searchResult : [String] = []
+    
+    var searchController: UISearchController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        createSearchBar()
         model.weatherForCity("Berlin")
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    // Creates the search bar programmatically.
+    func createSearchBar() {
+        definesPresentationContext = true
+        
+        searchController = UISearchController(searchResultsController: nil)
+        
+        searchController.searchResultsUpdater = self
+        
+        navigationItem.searchController = searchController
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        if let text = searchController.searchBar.text?.lowercased() {
+            
+            searchResult = model.getAllCityNames().filter({ $0.contains(text) })
+        } else {
+            searchResult = []
+        }
+        tableView.reloadData()
+    }
+    
+    // A Boolean variable to determine if
+    // the search results should be considered or not.
+    var shouldUseSearchResult : Bool {
+        
+        if let text = searchController.searchBar.text {
+            
+            if text.isEmpty {
+                return false
+            } else {
+                return searchController.isActive
+            }
+        } else {
+            return false
+        }
+        
     }
 
     // MARK: - Table view data source
@@ -29,10 +73,15 @@ class WeatherTableViewController: UITableViewController {
         return 1
     }
 
-    // The number of rows is equal to the amount of cities.
+    // The number of rows is either equal to the amount of cities in
+    // the array, or the search result number.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return 3
-        return model.cityAmount()
+        
+        if shouldUseSearchResult {
+            return searchResult.count
+        } else {
+            return model.cityAmount()
+        }
     }
 
     
@@ -59,7 +108,7 @@ class WeatherTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "infoSegue" {
             
-            var weatherInfo: WeatherInfoController  = segue.destination as! WeatherInfoController
+            let weatherInfo: WeatherInfoController  = segue.destination as! WeatherInfoController
             
             let pathForTappedCell: IndexPath = self.tableView.indexPathForSelectedRow!
             

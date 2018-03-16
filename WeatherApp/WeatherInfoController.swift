@@ -74,7 +74,7 @@ class WeatherInfoController: UIViewController {
             self.weatherImage.image = UIImage(named: "rain")
         case "thunder"?:
             self.weatherImage.image = UIImage(named: "thunder")
-        case "snow"?:
+        case "Snow"?:
             self.weatherImage.image = UIImage(named: "snow")
         default:
             self.weatherImage.image = UIImage(named: "oops")
@@ -105,6 +105,7 @@ class WeatherInfoController: UIViewController {
         } else {
             favoriteButton.setTitle(title1, for: .normal)
         }
+        
         model?.toggleFavorite(self.cityIndexInMemory!)
     }
     
