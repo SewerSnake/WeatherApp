@@ -52,7 +52,7 @@ class Weather {
                             with: data!,
                             options: .mutableContainers) as! [String: AnyObject]
                         
-                        if weather["cod"]! as! String != "404" {
+                        if weather["cod"]!.isKind(of: NSNumber.self) {
                             
                             self.latitude = weather["coord"]!["lat"]!! as AnyObject
                             

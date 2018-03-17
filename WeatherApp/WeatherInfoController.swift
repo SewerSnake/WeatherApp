@@ -88,11 +88,24 @@ class WeatherInfoController: UIViewController {
         self.cityName.text = self.city?.cityName
         self.country.text = self.city?.country
         self.weather.text = self.city?.weather
+        self.recommendation.text = recommend()
         
         self.temperature.text = String(self.city!.temp) + " °C"
         self.latitude.text = "lat: " + String(self.city!.lat)
         self.longitude.text = "long: " + String(self.city!.long)
         self.windSpeed.text = String(self.city!.speed) + " m/s"
+    }
+    
+    // Gives different recommendations,
+    // depending on the weather
+    func recommend() -> String {
+        if Double((city?.temp)!) <= 0.0 {
+            return "Dress warmly!"
+        } else if Double((city?.temp)!) >= 20.0 {
+            return "Dress lightly!"
+        } else {
+            return ""
+        }
     }
     
     // Changes the title of the button.

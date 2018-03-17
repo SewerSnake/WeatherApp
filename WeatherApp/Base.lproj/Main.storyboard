@@ -19,27 +19,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The Weather App" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JVz-bZ-xkh">
-                                <rect key="frame" x="72" y="174" width="230" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Weather App" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JVz-bZ-xkh">
+                                <rect key="frame" x="72" y="174" width="230" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="weather_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Ed5-wj-fky">
-                                <rect key="frame" x="42" y="221" width="291" height="164"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="weather_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Ed5-wj-fky">
+                                <rect key="frame" x="42" y="221" width="291" height="199"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecI-Sg-GRA">
-                                <rect key="frame" x="132" y="459" width="110" height="71"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="See weather"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecI-Sg-GRA">
+                                <rect key="frame" x="132" y="494" width="110" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="See weather">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="jVt-QQ-x9V" kind="show" id="3z1-63-LYn"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JVz-bZ-xkh" secondAttribute="trailing" constant="73" id="0I9-HH-JWX"/>
+                            <constraint firstItem="Ed5-wj-fky" firstAttribute="top" secondItem="JVz-bZ-xkh" secondAttribute="bottom" constant="12" id="25q-pJ-EuU"/>
+                            <constraint firstItem="JVz-bZ-xkh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="110" id="2ku-Nb-6Te"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ed5-wj-fky" secondAttribute="trailing" constant="42" id="ODn-Bj-JIG"/>
+                            <constraint firstItem="ecI-Sg-GRA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="132" id="OhU-mP-V7P"/>
+                            <constraint firstItem="JVz-bZ-xkh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="72" id="TrS-pU-tC1"/>
+                            <constraint firstItem="ecI-Sg-GRA" firstAttribute="top" secondItem="Ed5-wj-fky" secondAttribute="bottom" constant="74" id="rw5-tR-PAP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ecI-Sg-GRA" secondAttribute="bottom" constant="137" id="tOw-vb-M9N"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ecI-Sg-GRA" secondAttribute="trailing" constant="133" id="u9N-VM-pzZ"/>
+                            <constraint firstItem="Ed5-wj-fky" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="42" id="zd3-tj-bij"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="HIP-wb-F79"/>
