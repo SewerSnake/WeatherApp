@@ -19,7 +19,7 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
     override func viewDidLoad() {
         super.viewDidLoad()
         createSearchBar()
-        model.weatherForCity("Ayia Napa")
+        model.weatherForCity("Brussels")
     }
     
     override func didReceiveMemoryWarning() {
