@@ -52,7 +52,7 @@ class Weather {
                             with: data!,
                             options: .mutableContainers) as! [String: AnyObject]
                         
-                        if weather.isEmpty == false {
+                        if weather["cod"]! as! String != "404" {
                             
                             self.latitude = weather["coord"]!["lat"]!! as AnyObject
                             
