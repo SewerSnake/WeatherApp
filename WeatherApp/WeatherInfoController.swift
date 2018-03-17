@@ -85,7 +85,7 @@ class WeatherInfoController: UIViewController {
     // the weather into the approriate
     // graphical components.
     func loadInfo() {
-        self.cityName.text = self.city?.city
+        self.cityName.text = self.city?.cityName
         self.country.text = self.city?.country
         self.weather.text = self.city?.weather
         

@@ -26,12 +26,12 @@ class City: NSCoding {
     var temp : Float
     var speed : Float
     
-    var city : String
+    var cityName : String
     var country : String
     var weather : String
     
     // temp is reduced by 272.15 to convert it to Celsius
-    init(lat: Float,long: Float,temp: Float,speed: Float,city: String,country: String,weather: String) {
+    init(lat: Float,long: Float,temp: Float,speed: Float,cityName: String,country: String,weather: String) {
         self.favorite = false
         
         self.lat = lat
@@ -42,7 +42,7 @@ class City: NSCoding {
         
         self.speed = speed
         
-        self.city = city
+        self.cityName = cityName
         
         self.country = country
         
@@ -63,7 +63,7 @@ class City: NSCoding {
         aCoder.encode(self.long, forKey: keyLongitude)
         aCoder.encode(self.temp, forKey: keyTemperature)
         aCoder.encode(self.speed, forKey: keySpeed)
-        aCoder.encode(self.city, forKey: keyCity)
+        aCoder.encode(self.cityName, forKey: keyCity)
         aCoder.encode(self.country, forKey: keyCountry)
         aCoder.encode(self.weather, forKey: keyWeather)
     }
@@ -82,7 +82,7 @@ class City: NSCoding {
         self.temp = aDecoder.decodeObject(forKey: keyTemperature) as! Float
         self.speed = aDecoder.decodeObject(forKey: keySpeed) as! Float
         
-        self.city = aDecoder.decodeObject(forKey: keyCity) as! String
+        self.cityName = aDecoder.decodeObject(forKey: keyCity) as! String
         self.country = aDecoder.decodeObject(forKey: keyCountry) as! String
         self.weather = aDecoder.decodeObject(forKey: keyWeather) as! String
     }

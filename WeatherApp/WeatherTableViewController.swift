@@ -91,7 +91,7 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
         
         let city: City = model.getCity(indexPath.row)!
         
-        cell.cityName?.text = city.city
+        cell.cityName?.text = city.cityName
         
         cell.temperature?.text = String(city.temp) + " °C"
 

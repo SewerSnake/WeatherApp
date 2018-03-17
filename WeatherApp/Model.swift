@@ -34,7 +34,7 @@ class Model: NSObject {
     // Adds the city to the end of the array of cities.
     // Saves the updated array.
     func addCity(_ city: City) {
-        print("City " + city.city + " added!")
+        print("City " + city.cityName + " added!")
         cities.append(city)
         save()
     }
@@ -45,7 +45,7 @@ class Model: NSObject {
         var names: [String] = []
         
         for city: City in self.cities {
-            names.append(city.city.lowercased())
+            names.append(city.cityName.lowercased())
         }
         
         return names

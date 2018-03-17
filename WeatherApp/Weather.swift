@@ -52,23 +52,28 @@ class Weather {
                             with: data!,
                             options: .mutableContainers) as! [String: AnyObject]
                         
-                        self.latitude = weather["coord"]!["lat"]!! as AnyObject
-                        
-                        self.longitude = weather["coord"]!["lon"]!! as AnyObject
-                        
-                        self.temperature = weather["main"]!["temp"]!! as AnyObject
-                        
-                        self.speed = weather["wind"]!["speed"]!! as AnyObject
-                        
-                        self.cityName = weather["name"]!
-                        
-                        self.country = weather["sys"]!["country"]!! as AnyObject
-                       
-                        var weatherObject = weather["weather"]![0] as! [String : AnyObject]
-                        
-                        self.weatherDescription = weatherObject["main"]!
-                        
-                        self.success = true
+                        if weather.isEmpty == false {
+                            
+                            self.latitude = weather["coord"]!["lat"]!! as AnyObject
+                            
+                            self.longitude = weather["coord"]!["lon"]!! as AnyObject
+                            
+                            self.temperature = weather["main"]!["temp"]!! as AnyObject
+                            
+                            self.speed = weather["wind"]!["speed"]!! as AnyObject
+                            
+                            self.cityName = weather["name"]!
+                            
+                            self.country = weather["sys"]!["country"]!! as AnyObject
+                            
+                            var weatherObject = weather["weather"]![0] as! [String : AnyObject]
+                            
+                            self.weatherDescription = weatherObject["main"]!
+                            
+                            self.success = true
+                        } else {
+                            self.success = false
+                        }
                         
                     } catch let jsonError as NSError {
                         
@@ -85,7 +90,7 @@ class Weather {
             
             if (self.success)! {
                 
-                let theCity = City(lat: latitude as! Float,long: longitude as! Float,temp: temperature as! Float,speed: speed as! Float,city: cityName as! String,country: country as! String,weather: weatherDescription as! String)
+                let theCity = City(lat: latitude as! Float,long: longitude as! Float,temp: temperature as! Float,speed: speed as! Float,cityName: cityName as! String,country: country as! String,weather: weatherDescription as! String)
                 
                 return theCity
             }
