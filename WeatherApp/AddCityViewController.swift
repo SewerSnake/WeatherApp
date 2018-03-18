@@ -14,6 +14,8 @@ class AddCityViewController: UIViewController {
     
     private let placeholder: String = "Enter the name of a city"
     
+    private let errorMessage: String = "Couldn't get weather info..."
+    
     @IBOutlet weak var inputTextField: UITextField!
     
     @IBOutlet weak var fetechWeatherButton: UIButton!
@@ -33,10 +35,14 @@ class AddCityViewController: UIViewController {
     // The app then performs a segue to a new
     // WeatherTableView.
     @IBAction func fetch(_ sender: Any) {
-        if inputTextField.text != self.placeholder && inputTextField.text != "" {
-            model?.weatherForCity(inputTextField.text!)
+        if inputTextField.text != placeholder && inputTextField.text != "" {
+            let success = model?.weatherForCity(inputTextField.text!)
             
-            self.performSegue(withIdentifier:"backToListSegue", sender: self)
+            if success! {
+                self.performSegue(withIdentifier:"backToListSegue", sender: self)
+            } else {
+                inputTextField.text = errorMessage
+            }
         }
     }
     

@@ -32,7 +32,7 @@ class City: NSCoding {
     
     // temp is reduced by 272.15 to convert it to Celsius
     init(lat: Float,long: Float,temp: Float,speed: Float,cityName: String,country: String,weather: String) {
-        self.favorite = false
+        self.favorite = true
         
         self.lat = lat
         
