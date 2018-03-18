@@ -30,9 +30,9 @@ class WeatherInfoController: UIViewController {
     
     @IBOutlet weak var favoriteButton: UIButton!
     
-    let title1 = "Set as favorite"
+    private let title1 = "Set as favorite"
     
-    let title2 = "Remove favorite"
+    private let title2 = "Remove favorite"
     
     var model: Model?
     
@@ -45,6 +45,8 @@ class WeatherInfoController: UIViewController {
         
         city = model?.getCity(cityIndexInMemory!)
         
+        setButtonTitle()
+        
         loadImage()
         
         loadInfo()
@@ -53,6 +55,16 @@ class WeatherInfoController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    // Assigns the appropriate button title,
+    // depending on the user's preference.
+    func setButtonTitle() {
+        if (self.city?.favorite)! {
+            favoriteButton.setTitle(title2, for: .normal)
+        } else {
+            favoriteButton.setTitle(title1, for: .normal)
+        }
     }
     
     // Loads an appropriate image,
