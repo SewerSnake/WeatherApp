@@ -19,7 +19,7 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
     override func viewDidLoad() {
         super.viewDidLoad()
         createSearchBar()
-        model.weatherForCity("Brussels")
+        //model.weatherForCity("Gothenburg")
     }
     
     override func didReceiveMemoryWarning() {
@@ -37,6 +37,9 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
         navigationItem.searchController = searchController
     }
     
+    // Filters what is shown in the TableView.
+    // Only cities that contain letters the user
+    // has written in the search bar are shown.
     func updateSearchResults(for searchController: UISearchController) {
         
         if let text = searchController.searchBar.text?.lowercased() {
@@ -45,6 +48,7 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
         } else {
             searchResult = []
         }
+        
         tableView.reloadData()
     }
     
@@ -106,15 +110,23 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
     // corresponds to the Array in class Model, this means
     // that the correct City object is accessed.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let pathForTappedCell: IndexPath = self.tableView.indexPathForSelectedRow!
+        
         if segue.identifier == "infoSegue" {
             
             let weatherInfo: WeatherInfoController  = segue.destination as! WeatherInfoController
             
-            let pathForTappedCell: IndexPath = self.tableView.indexPathForSelectedRow!
             
             weatherInfo.cityIndexInMemory = pathForTappedCell.row
             
             weatherInfo.model = model
+        }
+        
+        if segue.identifier == "fetchWeatherSegue" {
+            let weatherFetcher: AddCityViewController = segue.destination as! AddCityViewController
+            
+            weatherFetcher.model = model
         }
     }
 }

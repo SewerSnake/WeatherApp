@@ -60,10 +60,10 @@
             </objects>
             <point key="canvasLocation" x="476" y="101.19940029985008"/>
         </scene>
-        <!--Weather Table View Controller-->
+        <!--Weather list-->
         <scene sceneID="go7-yt-hw1">
             <objects>
-                <tableViewController id="jVt-QQ-x9V" customClass="WeatherTableViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Weather list" id="jVt-QQ-x9V" customClass="WeatherTableViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Vpy-zS-OQb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -114,10 +114,62 @@
                             <outlet property="delegate" destination="jVt-QQ-x9V" id="LqJ-WI-f7g"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem tag="1" springLoaded="YES" systemItem="add" id="nrz-Bs-2rW">
+                            <connections>
+                                <segue destination="gfc-A7-tnS" kind="show" identifier="fetchWeatherSegue" id="JAt-T1-H0t"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZEX-wB-1F4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1532" y="100.29985007496252"/>
+        </scene>
+        <!--Add City View Controller-->
+        <scene sceneID="7ka-z0-l2P">
+            <objects>
+                <viewController id="gfc-A7-tnS" customClass="AddCityViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="goT-fs-dlT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter the name of a city" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8lm-C6-hWh">
+                                <rect key="frame" x="100" y="306.5" width="175" height="30"/>
+                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGp-HP-Qgb">
+                                <rect key="frame" x="132" y="411.5" width="111" height="42.5"/>
+                                <state key="normal" title="Fetch weather"/>
+                                <connections>
+                                    <action selector="fetch:" destination="gfc-A7-tnS" eventType="touchUpInside" id="tUt-80-zcn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="BGp-HP-Qgb" firstAttribute="top" secondItem="8lm-C6-hWh" secondAttribute="bottom" constant="75" id="1c3-Z6-TuR"/>
+                            <constraint firstItem="BGp-HP-Qgb" firstAttribute="centerX" secondItem="8lm-C6-hWh" secondAttribute="centerX" id="DNE-4X-o7d"/>
+                            <constraint firstItem="01s-Kd-9uu" firstAttribute="bottom" secondItem="BGp-HP-Qgb" secondAttribute="bottom" constant="169" id="L9V-C6-7sv"/>
+                            <constraint firstItem="8lm-C6-hWh" firstAttribute="centerX" secondItem="01s-Kd-9uu" secondAttribute="centerX" id="QUU-56-rC3"/>
+                            <constraint firstItem="8lm-C6-hWh" firstAttribute="centerY" secondItem="01s-Kd-9uu" secondAttribute="centerY" id="Zcv-53-aLb"/>
+                            <constraint firstItem="BGp-HP-Qgb" firstAttribute="leading" secondItem="01s-Kd-9uu" secondAttribute="leading" constant="132" id="aTV-ej-yGX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="01s-Kd-9uu"/>
+                    </view>
+                    <connections>
+                        <outlet property="fetch" destination="BGp-HP-Qgb" id="cun-wV-sLn"/>
+                        <outlet property="fetechWeatherButton" destination="BGp-HP-Qgb" id="05U-1g-BqD"/>
+                        <outlet property="inputTextField" destination="8lm-C6-hWh" id="bTJ-b5-cIw"/>
+                        <segue destination="jVt-QQ-x9V" kind="show" identifier="backToListSegue" id="dwZ-wm-RzJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uef-3o-muj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2785" y="-468"/>
         </scene>
         <!--Weather Info Controller-->
         <scene sceneID="I0P-IA-JK0">
@@ -128,61 +180,61 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Latitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGf-fz-Ce3">
-                                <rect key="frame" x="16" y="475" width="63" height="21"/>
+                                <rect key="frame" x="16" y="430.5" width="63" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Weather" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypD-pf-4Vz">
-                                <rect key="frame" x="16" y="239" width="65" height="21"/>
+                                <rect key="frame" x="16" y="194.5" width="65" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WfS-le-mqg">
-                                <rect key="frame" x="16" y="172" width="31" height="21"/>
+                                <rect key="frame" x="16" y="127.5" width="31" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozL-FQ-32P">
-                                <rect key="frame" x="297.5" y="172" width="61.5" height="21"/>
+                                <rect key="frame" x="297.5" y="127.5" width="61.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Temperature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMi-Iw-DIR">
-                                <rect key="frame" x="261" y="239" width="98" height="21"/>
+                                <rect key="frame" x="261" y="194.5" width="98" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Longitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zjP-zW-sb9">
-                                <rect key="frame" x="286" y="475" width="77" height="21"/>
+                                <rect key="frame" x="286" y="430.5" width="77" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind speed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghJ-6w-d1w">
-                                <rect key="frame" x="145" y="535" width="92" height="21"/>
+                                <rect key="frame" x="145" y="491" width="92" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8ma-jw-DgY">
-                                <rect key="frame" x="70" y="302" width="235" height="128"/>
+                                <rect key="frame" x="70" y="257.5" width="235" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="VFu-gJ-xiC"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recommendation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0f-Fs-mjH">
-                                <rect key="frame" x="120" y="576" width="135" height="21"/>
+                                <rect key="frame" x="120" y="532" width="135" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FBE-6L-SAY">
-                                <rect key="frame" x="138" y="617" width="98" height="30"/>
+                                <rect key="frame" x="138" y="573" width="98" height="30"/>
                                 <state key="normal" title="Set as favorite"/>
                                 <connections>
                                     <action selector="favorite:" destination="w2q-4a-YRM" eventType="touchUpInside" id="N1k-zb-gm4"/>
@@ -239,7 +291,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="piJ-zf-i2e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2284" y="173.16341829085459"/>
+            <point key="canvasLocation" x="2625" y="418"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="S8s-DU-3fy">
@@ -263,4 +315,8 @@
     <resources>
         <image name="weather_logo" width="1920" height="1271"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="JAt-T1-H0t"/>
+        <segue reference="dwZ-wm-RzJ"/>
+    </inferredMetricsTieBreakers>
 </document>
