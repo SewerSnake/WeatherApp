@@ -19,8 +19,11 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
     override func viewDidLoad() {
         super.viewDidLoad()
         createSearchBar()
-        //model.weatherForCity("Gothenburg")
     }
+    
+    /*override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+    }*/
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -111,12 +114,11 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
     // that the correct City object is accessed.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let pathForTappedCell: IndexPath = self.tableView.indexPathForSelectedRow!
-        
         if segue.identifier == "infoSegue" {
             
             let weatherInfo: WeatherInfoController  = segue.destination as! WeatherInfoController
             
+            let pathForTappedCell: IndexPath = self.tableView.indexPathForSelectedRow!
             
             weatherInfo.cityIndexInMemory = pathForTappedCell.row
             

@@ -35,9 +35,9 @@ class AddCityViewController: UIViewController {
     @IBAction func fetch(_ sender: Any) {
         if inputTextField.text != self.placeholder && inputTextField.text != "" {
             model?.weatherForCity(inputTextField.text!)
+            
+            self.performSegue(withIdentifier:"backToListSegue", sender: self)
         }
-        
-        self.performSegue(withIdentifier:"backToListSegue", sender: self)
     }
     
 }
