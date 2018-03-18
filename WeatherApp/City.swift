@@ -30,9 +30,10 @@ class City: NSCoding {
     var country : String
     var weather : String
     
-    // temp is reduced by 272.15 to convert it to Celsius
+    // temp is reduced by 272.15 to convert it to Celsius.
+    // The web API returns a Kelvin value.
     init(lat: Float,long: Float,temp: Float,speed: Float,cityName: String,country: String,weather: String) {
-        self.favorite = true
+        self.favorite = false
         
         self.lat = lat
         

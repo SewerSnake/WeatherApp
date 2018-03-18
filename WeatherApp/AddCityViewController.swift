@@ -46,4 +46,17 @@ class AddCityViewController: UIViewController {
         }
     }
     
+    // Ensures that the TableView has access to the
+    // same Model instance as this class.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "backToListSegue" {
+            let navController: UINavigationController = segue.destination as! UINavigationController
+            
+            let weatherList = navController.viewControllers.first as! WeatherTableViewController
+            
+            weatherList.model = model
+        }
+    }
+    
 }

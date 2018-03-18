@@ -27,16 +27,15 @@ class Model: NSObject {
     
     // Returns the amount of City objects in the array.
     func cityAmount() -> Int {
-        print("Amount of cities in array: " + String(cities.count))
+        //print("Amount of cities in array: " + String(cities.count))
         return cities.count
     }
     
     // Adds the city to the end of the array of cities.
     // Saves the updated array.
     func addCity(_ city: City) {
-        print("City " + city.cityName + " added!")
+        //print("City " + city.cityName + " added!")
         cities.append(city)
-        save()
     }
     
     // Returns the names of all cities in the array,

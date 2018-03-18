@@ -10,7 +10,7 @@ import UIKit
 
 class WeatherTableViewController: UITableViewController, UISearchResultsUpdating {
    
-    var model = Model()
+    var model: Model?
     
     var searchResult : [String] = []
     
@@ -18,6 +18,11 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if model == nil {
+            self.model = Model()
+        }
+        
         createSearchBar()
     }
     
@@ -47,7 +52,7 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
         
         if let text = searchController.searchBar.text?.lowercased() {
             
-            searchResult = model.getAllCityNames().filter({ $0.contains(text) })
+            searchResult = (model?.getAllCityNames().filter({ $0.contains(text) }))!
         } else {
             searchResult = []
         }
@@ -87,7 +92,7 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
         if shouldUseSearchResult {
             return searchResult.count
         } else {
-            return model.cityAmount()
+            return model!.cityAmount()
         }
     }
 
@@ -96,7 +101,7 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "location", for: indexPath) as! WeatherCell
         
-        let city: City = model.getCity(indexPath.row)!
+        let city: City = model!.getCity(indexPath.row)!
         
         cell.cityName?.text = city.cityName
         
