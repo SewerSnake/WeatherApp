@@ -51,6 +51,7 @@ class WeatherInfoController: UIViewController {
         
         loadInfo()
        
+        animate()
     }
 
     override func didReceiveMemoryWarning() {
@@ -82,7 +83,7 @@ class WeatherInfoController: UIViewController {
             self.weatherImage.image = UIImage(named: "clear")
         case "Clouds"?:
             self.weatherImage.image = UIImage(named: "clouds")
-        case "rain"?:
+        case "Drizzle"?:
             self.weatherImage.image = UIImage(named: "rain")
         case "thunder"?:
             self.weatherImage.image = UIImage(named: "thunder")
@@ -102,14 +103,14 @@ class WeatherInfoController: UIViewController {
         self.weather.text = self.city?.weather
         self.recommendation.text = recommend()
         
-        self.temperature.text = String(self.city!.temp) + " °C"
+        self.temperature.text = String(format: "%.2f", self.city!.temp) + " °C"
         self.latitude.text = "lat: " + String(self.city!.lat)
         self.longitude.text = "long: " + String(self.city!.long)
         self.windSpeed.text = String(self.city!.speed) + " m/s"
     }
     
     // Gives different recommendations,
-    // depending on the weather
+    // depending on the weather.
     func recommend() -> String {
         if Double((city?.temp)!) <= 0.0 {
             return "Dress warmly!"
@@ -118,6 +119,10 @@ class WeatherInfoController: UIViewController {
         } else {
             return ""
         }
+    }
+    
+    func animate() {
+        
     }
     
     // Changes the title of the button.

@@ -105,7 +105,7 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
         
         cell.cityName?.text = city.cityName
         
-        cell.temperature?.text = String(city.temp) + " °C"
+        cell.temperature?.text = String(format:"%.2f", city.temp) + " °C"
 
         return cell
     }

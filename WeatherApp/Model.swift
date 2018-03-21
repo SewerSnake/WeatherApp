@@ -84,7 +84,7 @@ class Model: NSObject {
     // Load the current value of 'favorite' from memory for
     // the corresponding city. This boolean value
     // is either true, to symbolize that its a user's favorite,
-    // or false, i.e not a favorite.
+    // or false, i.e. not a favorite.
     // The opposite value is then saved to memory.
     func toggleFavorite(_ cityToToggle: Int?) {
         
@@ -105,7 +105,8 @@ class Model: NSObject {
     
     // Creates an instance of class Weather.
     // Retrieves a City object for the given city.
-    // Adds it to the array of cities.
+    // Adds it to the array of cities, if it could
+    // be found. Otherwise, false is returned.
     func weatherForCity(_ city: String) -> Bool {
         let weather = Weather()
         
