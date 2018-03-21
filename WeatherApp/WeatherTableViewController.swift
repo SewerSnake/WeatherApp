@@ -72,6 +72,7 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
             return false
         }
     }
+    
 
     // MARK: - Table view data source
 
@@ -98,11 +99,17 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "location", for: indexPath) as! WeatherCell
         
-        let city: City = model!.getCity(indexPath.row)!
+        let city: City?
         
-        cell.cityName?.text = city.cityName
+        if shouldUseSearchResult {
+            city = nil
+        } else {
+            city = model!.getCity(indexPath.row)!
+        }
         
-        cell.temperature?.text = String(format:"%.2f", city.temp) + " °C"
+        cell.cityName?.text = city?.cityName
+        
+        cell.temperature?.text = String(format:"%.2f", (city?.temp)!) + " °C"
 
         return cell
     }
@@ -112,7 +119,7 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
 
     // Provides class WeatherInfoController with the
     // tapped cell's row number. As the content in the TableView
-    // corresponds to the Array in class Model, this means
+    // corresponds to the array in class Model, this means
     // that the correct City object is accessed.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
