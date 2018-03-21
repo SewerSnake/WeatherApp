@@ -66,11 +66,8 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
         
         if let text = searchController.searchBar.text {
             
-            if text.isEmpty {
-                return false
-            } else {
-                return searchController.isActive
-            }
+            return text.isEmpty ? false:searchController.isActive
+            
         } else {
             return false
         }

@@ -32,7 +32,6 @@ class Model: NSObject {
     }
     
     // Adds the city to the end of the array of cities.
-    // Saves the updated array.
     func addCity(_ city: City) {
         //print("City " + city.cityName + " added!")
         cities.append(city)
