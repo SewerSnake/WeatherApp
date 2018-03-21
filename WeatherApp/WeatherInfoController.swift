@@ -77,15 +77,15 @@ class WeatherInfoController: UIViewController {
         }
         
         switch self.city?.weather {
-        case "sunny"?:
+        case "Sunny"?:
             self.weatherImage.image = UIImage(named: "sunny")
         case "Clear"?:
             self.weatherImage.image = UIImage(named: "clear")
         case "Clouds"?:
             self.weatherImage.image = UIImage(named: "clouds")
-        case "Drizzle"?:
+        case "Rain"?:
             self.weatherImage.image = UIImage(named: "rain")
-        case "thunder"?:
+        case "Thunder"?:
             self.weatherImage.image = UIImage(named: "thunder")
         case "Snow"?:
             self.weatherImage.image = UIImage(named: "snow")
@@ -122,7 +122,18 @@ class WeatherInfoController: UIViewController {
     }
     
     func animate() {
+        UIView.beginAnimations("Move image", context: nil)
+        UIView.setAnimationDuration(0.5)
+        UIView.setAnimationDelay(1.0)
+        UIView.setAnimationCurve(.easeIn)
         
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        let screenHeight = screenSize.height
+        
+        weatherImage.center = CGPoint(x: screenWidth / 2, y: screenHeight / 2)
+        
+        UIView.commitAnimations()
     }
     
     // Changes the title of the button.
