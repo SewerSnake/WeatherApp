@@ -16,6 +16,10 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
     
     var searchController: UISearchController!
     
+    // If a Model instance hasn't been set via
+    // an instance of class WeatherInfoController,
+    // a new instance of the model class is created.
+    // The search bar is also created.
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,10 +29,6 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
         
         createSearchBar()
     }
-    
-    /*override func viewWillAppear(_ animated: Bool) {
-        self.tableView.reloadData()
-    }*/
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -81,8 +81,8 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
         return 1
     }
 
-    // The number of rows is either equal to the amount of cities in
-    // the array, or the search result number.
+    // The number of rows is either equal to the amount of search
+    // results, or the amount of cities in the array.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if shouldUseSearchResult {
