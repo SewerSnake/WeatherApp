@@ -74,7 +74,6 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
         } else {
             return false
         }
-        
     }
 
     // MARK: - Table view data source
@@ -96,7 +95,8 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
         }
     }
 
-    
+    // The name and temperature of the city object
+    // are loaded into the cell's labels.
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "location", for: indexPath) as! WeatherCell

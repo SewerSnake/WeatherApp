@@ -40,6 +40,15 @@ class WeatherInfoController: UIViewController {
     
     var cityIndexInMemory: Int?
     
+    // Retrieves the corresponding city
+    // in memory. The title of the button
+    // is set depending on the locations
+    // priority. The appropriate image is
+    // loaded, depending on the weather.
+    // All of the other weather info is
+    // loaded. Finally, an animation is
+    // played where the weather image is
+    // moved to the center of the screen.
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -121,11 +130,13 @@ class WeatherInfoController: UIViewController {
         }
     }
     
+    // The weather image is moved to
+    // the center of the screen.
     func animate() {
         UIView.beginAnimations("Move image", context: nil)
         UIView.setAnimationDuration(0.5)
         UIView.setAnimationDelay(1.0)
-        UIView.setAnimationCurve(.easeIn)
+        UIView.setAnimationCurve(.easeInOut)
         
         let screenSize = UIScreen.main.bounds
         let screenWidth = screenSize.width
