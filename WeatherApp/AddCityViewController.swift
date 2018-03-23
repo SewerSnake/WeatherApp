@@ -25,8 +25,9 @@ class AddCityViewController: UIViewController {
     // for a better user experience.
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background_image")!)
-        //self.view.sendSubview(toBack: self.view)
+        
         self.inputTextField.becomeFirstResponder()
     }
 
