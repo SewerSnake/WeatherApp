@@ -63,10 +63,11 @@ class Model: NSObject {
     }
     
     // Gets a City object for the name of
-    // the desired city.
+    // the desired city. Used when the search
+    // bar is used.
     func getCity(_ desiredCity: String) -> City? {
         for city: City in self.cities {
-            if city.cityName == desiredCity {
+            if city.cityName.lowercased() == desiredCity {
                 return city
             }
         }

@@ -102,7 +102,9 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
         let city: City?
         
         if shouldUseSearchResult {
+            
             city = model?.getCity(searchResult[indexPath.row])
+            
         } else {
             city = model!.getCity(indexPath.row)!
             cell.dataText = String(indexPath.row)
