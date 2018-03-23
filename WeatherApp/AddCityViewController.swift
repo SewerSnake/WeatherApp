@@ -20,10 +20,13 @@ class AddCityViewController: UIViewController {
     
     @IBOutlet weak var fetechWeatherButton: UIButton!
     
+    // Sets the background image.
     // Makes the TextField first responder,
     // for a better user experience.
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background_image")!)
+        //self.view.sendSubview(toBack: self.view)
         self.inputTextField.becomeFirstResponder()
     }
 
