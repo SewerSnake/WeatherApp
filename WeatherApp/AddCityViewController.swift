@@ -16,6 +16,8 @@ class AddCityViewController: UIViewController {
     
     private let errorMessage: String = "Couldn't get weather info..."
     
+    private let cityExists: String = "You have this city already!"
+    
     @IBOutlet weak var inputTextField: UITextField!
     
     @IBOutlet weak var fetechWeatherButton: UIButton!
@@ -54,6 +56,8 @@ class AddCityViewController: UIViewController {
             } else {
                 inputTextField.text = errorMessage
             }
+        } else if (model?.cityExists(cityString))! {
+            inputTextField.text = cityExists
         }
     }
     

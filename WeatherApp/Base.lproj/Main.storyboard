@@ -147,7 +147,10 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGp-HP-Qgb">
                                 <rect key="frame" x="132" y="433.5" width="111" height="20.5"/>
-                                <state key="normal" title="Fetch weather"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Fetch weather">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="fetch:" destination="gfc-A7-tnS" eventType="touchUpInside" id="tUt-80-zcn"/>
                                 </connections>
