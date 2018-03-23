@@ -49,6 +49,30 @@ class Model: NSObject {
         return names
     }
     
+    // Checks if the city the user wants to
+    // add already exists in the array.
+    // Returns true if it does.
+    // Returns false if it doesn't.
+    func cityExists(_ desiredCity: String) -> Bool {
+        for city: City in self.cities {
+            if city.cityName == desiredCity {
+                return true
+            }
+        }
+        return false
+    }
+    
+    // Gets a City object for the name of
+    // the desired city.
+    func getCity(_ desiredCity: String) -> City? {
+        for city: City in self.cities {
+            if city.cityName == desiredCity {
+                return city
+            }
+        }
+        return nil
+    }
+    
     // Saves the list of cities via serialization.
     func save() {
         let preferences: UserDefaults = UserDefaults.standard

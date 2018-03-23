@@ -20,6 +20,8 @@ class AddCityViewController: UIViewController {
     
     @IBOutlet weak var fetechWeatherButton: UIButton!
     
+    // Makes the TextField first responder,
+    // for a better user experience.
     override func viewDidLoad() {
         super.viewDidLoad()
         self.inputTextField.becomeFirstResponder()
@@ -30,13 +32,18 @@ class AddCityViewController: UIViewController {
     }
     
     // Ensures that the user has written
-    // something, before making a http GET
-    // request to the web API 'openweathermap'.
+    // something. Also checks that the written
+    // city doesn't already exists in the array.
+    // Then, a http GET request is made to
+    // the web API 'openweathermap'.
     // The app then performs a segue to a new
     // WeatherTableView.
     @IBAction func fetch(_ sender: Any) {
-        if inputTextField.text != placeholder && inputTextField.text != "" {
-            let success = model?.weatherForCity(inputTextField.text!)
+        
+        let cityString: String = inputTextField.text!
+        print("cityString: \(cityString)")
+        if cityString != placeholder && cityString != "" && (model?.cityExists(cityString))! == false {
+            let success = model?.weatherForCity(cityString)
             
             if success! {
                 self.performSegue(withIdentifier:"backToListSegue", sender: self)

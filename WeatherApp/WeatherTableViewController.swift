@@ -102,9 +102,10 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
         let city: City?
         
         if shouldUseSearchResult {
-            city = nil
+            city = model?.getCity(searchResult[indexPath.row])
         } else {
             city = model!.getCity(indexPath.row)!
+            cell.dataText = String(indexPath.row)
         }
         
         cell.cityName?.text = city?.cityName
@@ -127,9 +128,14 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
             
             let weatherInfo: WeatherInfoController  = segue.destination as! WeatherInfoController
             
+            /*let pathForTappedCell: IndexPath = self.tableView.indexPathForSelectedRow!
+            
+            weatherInfo.cityIndexInMemory = pathForTappedCell.row*/
             let pathForTappedCell: IndexPath = self.tableView.indexPathForSelectedRow!
             
-            weatherInfo.cityIndexInMemory = pathForTappedCell.row
+            let tappedCell: WeatherCell = self.tableView.cellForRow(at: pathForTappedCell) as! WeatherCell
+            
+            weatherInfo.cityIndexInMemory = Int(tappedCell.dataText!)
             
             weatherInfo.model = model
         }

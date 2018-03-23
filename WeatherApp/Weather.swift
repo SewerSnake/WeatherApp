@@ -10,7 +10,7 @@ import Foundation
 
 class Weather {
     
-    private let openWeatherMapBaseURL = "http://api.openweathermap.org/data/2.5/weather"
+    //private let openWeatherMapBaseURL = "http://api.openweathermap.org/data/2.5/weather"
     
     private let openWeatherMapAPIKey = "a469edc58b1a58d9be6f1395fba10e34"
     
@@ -35,7 +35,7 @@ class Weather {
         let session = URLSession.shared
         
         if let safeString = cityToLoad.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
-            //print(safeString)
+            print(safeString)
             let weatherRequestURL = NSURL(string: "https://api.openweathermap.org/data/2.5/weather?q=\(safeString)&APPID=\(openWeatherMapAPIKey)")!
             
             let dataTask = session.dataTask(with: weatherRequestURL as URL) {
