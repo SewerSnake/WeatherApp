@@ -41,7 +41,7 @@ class AddCityViewController: UIViewController {
     @IBAction func fetch(_ sender: Any) {
         
         let cityString: String = inputTextField.text!
-        print("cityString: \(cityString)")
+        //print("cityString: \(cityString)")
         if cityString != placeholder && cityString != "" && (model?.cityExists(cityString))! == false {
             let success = model?.weatherForCity(cityString)
             
