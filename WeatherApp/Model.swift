@@ -10,18 +10,20 @@ import Foundation
 
 class Model: NSObject {
     
-    let citySaveKey: String = "cities"
+    let favoritesKey: String = "favorites"
+    
+    var favorites = [String]()
     
     var cities = [City]()
     
-    // Loads the saved cities in memory into array cities.
+    // Loads the saved cities in memory into array favorites.
     override init() {
         let preferences: UserDefaults = UserDefaults.standard
         
-        let data: NSData? = preferences.object(forKey: citySaveKey) as? NSData
+        let data: [String]? = preferences.object(forKey: favoritesKey) as? [String]
         
         if data != nil {
-            self.cities = NSKeyedUnarchiver.unarchiveObject(with: data! as Data) as! [City]
+            self.favorites = preferences.object(forKey: favoritesKey) as! [String]
         }
     }
     
@@ -74,7 +76,7 @@ class Model: NSObject {
         return nil
     }
     
-    // Saves the list of cities via serialization.
+    // Saves the list of the users favorites to UserDefaults.
     func save() {
         let preferences: UserDefaults = UserDefaults.standard
         
@@ -86,9 +88,7 @@ class Model: NSObject {
             }
         }
         
-        let data: NSData = NSKeyedArchiver.archivedData(withRootObject: filteredCities) as NSData
-        
-        preferences.set(data, forKey:citySaveKey)
+        preferences.set(filteredCities, forKey:favoritesKey)
         
         preferences.synchronize
     }

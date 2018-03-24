@@ -51,7 +51,7 @@ class City: NSCoding {
         
     }
     
-    // Uses serialization to save to memory.
+    // Uses serialization to save to memory. Is unused
     func encode(with aCoder: NSCoder) {
         
         if self.favorite {
@@ -69,7 +69,7 @@ class City: NSCoding {
         aCoder.encode(self.weather, forKey: keyWeather)
     }
     
-    // Deserializes from memory.
+    // Deserializes from memory. Is unused
     required init?(coder aDecoder: NSCoder) {
         
         if (aDecoder.decodeObject(forKey: keyFavorite) as! String) == "true" {
