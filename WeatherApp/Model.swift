@@ -12,9 +12,9 @@ class Model: NSObject {
     
     let favoritesKey: String = "favorites"
     
-    var favorites = [String]()
+    private var favorites = [String]()
     
-    var cities = [City]()
+    private var cities = [City]()
     
     // Loads the saved cities in memory into array favorites.
     override init() {
@@ -27,10 +27,20 @@ class Model: NSObject {
         }
     }
     
-    // Returns the amount of City objects in the array.
+    // Returns the amount of City objects in the array of cities.
     func cityAmount() -> Int {
         //print("Amount of cities in array: " + String(cities.count))
         return cities.count
+    }
+    
+    // Returns the amount of favorites in the array of favorites.
+    func amountOfFavorites() -> Int {
+        return favorites.count
+    }
+    
+    // Returns the name of a favorited city for the given index.
+    func getFavorite(_ index: Int) -> String {
+        return favorites[index]
     }
     
     // Adds the city to the end of the array of cities.
@@ -80,11 +90,11 @@ class Model: NSObject {
     func save() {
         let preferences: UserDefaults = UserDefaults.standard
         
-        var filteredCities = [City]()
+        var filteredCities = [String]()
         
         for city: City in self.cities {
             if city.favorite {
-                filteredCities.append(city)
+                filteredCities.append(city.cityName)
             }
         }
         

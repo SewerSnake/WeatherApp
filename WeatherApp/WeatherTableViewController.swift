@@ -12,22 +12,27 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
    
     var model: Model?
     
-    var searchResult : [String] = []
+    var searchResult: [String] = []
     
     var searchController: UISearchController!
     
+    // The search bar is created for the TableView.
     // If a Model instance hasn't been set via
     // an instance of class WeatherInfoController,
     // a new instance of the model class is created.
-    // The search bar is also created.
+    // For each city that is among the user's favorites,
+    // a request is made to get the latest weather info
+    // for those cities.
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        createSearchBar()
+        
         if model == nil {
             self.model = Model()
+            
+            getFavorites()
         }
-        
-        createSearchBar()
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,6 +48,27 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
         searchController.searchResultsUpdater = self
         
         navigationItem.searchController = searchController
+    }
+    
+    // Retrieves all of the user's favorite cities
+    // from the openweathermap API. A delay is used
+    // between each http GET, to avoid overloading
+    // the API.
+    // Ensures that the user cannot interact with
+    // the app during this time.
+    func getFavorites() {
+        let amountToLoad: Int = (self.model?.amountOfFavorites())!
+        
+        self.view.isUserInteractionEnabled = false
+        
+        for index in 0..<amountToLoad {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                self.model?.weatherForCity((self.model?.getFavorite(index))!)
+            }
+            //Doesn't work... tableView.reloadData()
+        }
+        
+        self.view.isUserInteractionEnabled = true
     }
     
     // Filters what is shown in the TableView.
@@ -62,8 +88,8 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
     
     // A Boolean variable to determine if
     // the search results should be considered or not.
-    var shouldUseSearchResult : Bool {
-        
+    var shouldUseSearchResult: Bool {
+       
         if let text = searchController.searchBar.text {
             
             return text.isEmpty ? false:searchController.isActive
@@ -130,9 +156,6 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
             
             let weatherInfo: WeatherInfoController  = segue.destination as! WeatherInfoController
             
-            /*let pathForTappedCell: IndexPath = self.tableView.indexPathForSelectedRow!
-            
-            weatherInfo.cityIndexInMemory = pathForTappedCell.row*/
             let pathForTappedCell: IndexPath = self.tableView.indexPathForSelectedRow!
             
             let tappedCell: WeatherCell = self.tableView.cellForRow(at: pathForTappedCell) as! WeatherCell
