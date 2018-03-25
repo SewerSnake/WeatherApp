@@ -149,7 +149,7 @@ class Model: NSObject {
     // Creates an instance of class Weather.
     // Retrieves a City object for the given city.
     // Adds it to the array of cities, if an error didn't
-    // occur. Otherwise, false is returned.
+    // occur.
     func weatherForCity(_ city: String) -> Bool {
         let weather = Weather()
         

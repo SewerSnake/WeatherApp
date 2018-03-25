@@ -140,13 +140,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the name of a city" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8lm-C6-hWh">
-                                <rect key="frame" x="100.5" y="328.5" width="174.5" height="30"/>
+                                <rect key="frame" x="100.5" y="306.5" width="174.5" height="30"/>
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGp-HP-Qgb">
-                                <rect key="frame" x="132" y="433.5" width="111" height="20.5"/>
+                                <rect key="frame" x="132" y="411.5" width="111" height="42.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Fetch weather">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -341,6 +341,7 @@
         <image name="weather_logo" width="1920" height="1271"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="9G0-la-A3s"/>
         <segue reference="dwZ-wm-RzJ"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -10,13 +10,13 @@ import UIKit
 
 class WeatherTableViewController: UITableViewController, UISearchResultsUpdating {
     
-    var shouldFetchWeather: Bool = false
-   
+    private var shouldFetchWeather: Bool = false
+    
+    private var searchResult: [String] = []
+    
+    private var searchController: UISearchController!
+    
     var model: Model?
-    
-    var searchResult: [String] = []
-    
-    var searchController: UISearchController!
     
     // The search bar is created for the TableView.
     // If a Model instance hasn't been set via
@@ -37,6 +37,7 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
         }
     }
     
+    // Still doesn't update the TableView...
     override func viewDidAppear(_ animated: Bool) {
         getFavorites()
         tableView.reloadData()
@@ -66,16 +67,21 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
     func getFavorites() {
         let amountToLoad: Int = (self.model?.amountOfFavorites())!
         
-        self.view.isUserInteractionEnabled = false
+        //self.view.isUserInteractionEnabled = false
         
         for index in 0..<amountToLoad {
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                self.model?.weatherForCity((self.model?.getFavorite(index))!)
-                self.model?.toggleFavorite(index)
+                
+                let success = self.model?.weatherForCity((self.model?.getFavorite(index))!)
+                
+                if success! {
+                    self.model?.toggleFavorite(index)
+                }
             }
         }
         
-        self.view.isUserInteractionEnabled = true
+        //self.view.isUserInteractionEnabled = true
     }
     
     // Filters what is shown in the TableView.
