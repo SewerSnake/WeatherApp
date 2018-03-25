@@ -22,9 +22,6 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
     // If a Model instance hasn't been set via
     // an instance of class WeatherInfoController,
     // a new instance of the model class is created.
-    // For each city that is among the user's favorites,
-    // a request is made to get the latest weather info
-    // for those cities.
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,10 +34,16 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
         }
     }
     
+    // For each city that is among the user's favorites,
+    // a request is made to get the latest weather info
+    // for those cities.
     // Still doesn't update the TableView...
     override func viewDidAppear(_ animated: Bool) {
-        getFavorites()
-        tableView.reloadData()
+        if shouldFetchWeather {
+            getFavorites()
+            tableView.reloadData()
+            shouldFetchWeather = false
+        }
     }
     
     override func didReceiveMemoryWarning() {

@@ -104,6 +104,8 @@ class WeatherInfoController: UIViewController {
             self.weatherImage.image = UIImage(named: "fog")
         case "Mist"?:
             self.weatherImage.image = UIImage(named: "mist")
+        case "Haze"?:
+            self.weatherImage.image = UIImage(named: "haze")
         default:
             self.weatherImage.image = UIImage(named: "oops")
         }
