@@ -10,13 +10,13 @@ import UIKit
 
 class AddCityViewController: UIViewController {
     
-    var model: Model?
-    
     private let placeholder: String = "Enter the name of a city"
     
     private let errorMessage: String = "Couldn't get weather info..."
     
     private let cityExists: String = "You have this city already!"
+    
+    var model: Model?
     
     @IBOutlet weak var inputTextField: UITextField!
     

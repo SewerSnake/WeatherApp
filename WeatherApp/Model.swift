@@ -10,7 +10,7 @@ import Foundation
 
 class Model: NSObject {
     
-    let favoritesKey: String = "favorites"
+    private let favoritesKey: String = "favorites"
     
     private var favorites = [String]()
     
@@ -24,6 +24,10 @@ class Model: NSObject {
         
         if data != nil {
             self.favorites = preferences.object(forKey: favoritesKey) as! [String]
+            print("Favorites loaded:")
+            for favorite: String in self.favorites {
+                print(favorite)
+            }
         }
     }
     
@@ -86,7 +90,7 @@ class Model: NSObject {
         return nil
     }
     
-    // Saves the list of the users favorites to UserDefaults.
+    // Saves the list of the user's favorites to UserDefaults.
     func save() {
         let preferences: UserDefaults = UserDefaults.standard
         
@@ -99,6 +103,11 @@ class Model: NSObject {
         }
         
         preferences.set(filteredCities, forKey:favoritesKey)
+        
+        print("Favorites saved:")
+        for favorite: String in self.favorites {
+            print(favorite)
+        }
         
         preferences.synchronize
     }
@@ -139,8 +148,8 @@ class Model: NSObject {
     
     // Creates an instance of class Weather.
     // Retrieves a City object for the given city.
-    // Adds it to the array of cities, if it could
-    // be found. Otherwise, false is returned.
+    // Adds it to the array of cities, if an error didn't
+    // occur. Otherwise, false is returned.
     func weatherForCity(_ city: String) -> Bool {
         let weather = Weather()
         

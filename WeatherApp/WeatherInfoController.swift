@@ -34,9 +34,11 @@ class WeatherInfoController: UIViewController {
     
     private let title2 = "Remove favorite"
     
-    var model: Model?
+    private let title3 = "Max five favorites!"
     
-    var city: City?
+    private var city: City?
+    
+    var model: Model?
     
     var cityIndexInMemory: Int?
     
@@ -153,16 +155,22 @@ class WeatherInfoController: UIViewController {
     
     // Changes the title of the button.
     // Saves the new state to memory via
-    // the Model class.
+    // the Model class. There is a maximum
+    // limit of five favorites for the app.
     @IBAction func favorite(_ sender: Any) {
         
-        if favoriteButton.currentTitle == title1 {
-            favoriteButton.setTitle(title2, for: .normal)
+        if (self.model?.amountOfFavorites())! < 2 {
+            
+            if favoriteButton.currentTitle == title1 {
+                favoriteButton.setTitle(title2, for: .normal)
+            } else {
+                favoriteButton.setTitle(title1, for: .normal)
+            }
+            
+            model?.toggleFavorite(self.cityIndexInMemory!)
         } else {
-            favoriteButton.setTitle(title1, for: .normal)
+            favoriteButton.setTitle(title3, for: .normal)
         }
-        
-        model?.toggleFavorite(self.cityIndexInMemory!)
     }
     
 }

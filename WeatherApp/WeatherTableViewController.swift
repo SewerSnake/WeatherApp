@@ -9,6 +9,8 @@
 import UIKit
 
 class WeatherTableViewController: UITableViewController, UISearchResultsUpdating {
+    
+    var shouldFetchWeather: Bool = false
    
     var model: Model?
     
@@ -31,8 +33,13 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
         if model == nil {
             self.model = Model()
             
-            getFavorites()
+            shouldFetchWeather = true
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        getFavorites()
+        tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -62,10 +69,10 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
         self.view.isUserInteractionEnabled = false
         
         for index in 0..<amountToLoad {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 self.model?.weatherForCity((self.model?.getFavorite(index))!)
+                self.model?.toggleFavorite(index)
             }
-            //Doesn't work... tableView.reloadData()
         }
         
         self.view.isUserInteractionEnabled = true

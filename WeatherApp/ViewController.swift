@@ -12,11 +12,11 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var appTitle: UILabel!
     
-    var dynamicAnimator: UIDynamicAnimator!
+    private var dynamicAnimator: UIDynamicAnimator!
     
-    var gravity: UIGravityBehavior!
+    private var gravity: UIGravityBehavior!
     
-    var collision: UICollisionBehavior!
+    private var collision: UICollisionBehavior!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +28,10 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    // Makes the UILabel fall downwards, as if
+    // affected by gravity. It is given collision
+    // detection, to prevent it from falling out of
+    // the screen.
     func dynamics() {
         dynamicAnimator = UIDynamicAnimator(referenceView: view)
         
