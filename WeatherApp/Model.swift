@@ -31,26 +31,34 @@ class Model: NSObject {
         }
     }
     
-    // Returns the amount of City objects in the array of cities.
-    func cityAmount() -> Int {
-        //print("Amount of cities in array: " + String(cities.count))
-        return cities.count
-    }
-    
-    // Returns the amount of favorites in the array of favorites.
-    func amountOfFavorites() -> Int {
-        return favorites.count
-    }
-    
-    // Returns the name of a favorited city for the given index.
-    func getFavorite(_ index: Int) -> String {
-        return favorites[index]
-    }
-    
     // Adds the city to the end of the array of cities.
     func addCity(_ city: City) {
         //print("City " + city.cityName + " added!")
         cities.append(city)
+    }
+    
+    // Gets a City object for the name of
+    // the desired city. Used for the search
+    // bar.
+    func getCity(_ desiredCity: String) -> City? {
+        for city: City in self.cities {
+            if city.cityName.lowercased() == desiredCity {
+                return city
+            }
+        }
+        return nil
+    }
+    
+    // Gets a City object for the tapped cell in the TableView.
+    // The cells row number corresponds to the index in array cities.
+    func getCity(_ cityToRetrieve: Int?) -> City? {
+        
+        if cityToRetrieve != nil && cities.isEmpty == false {
+            //print("City " + cities[cityToRetrieve!].city + " retrieved!")
+            return cities[cityToRetrieve!]
+        } else {
+            return nil
+        }
     }
     
     // Returns the names of all cities in the array,
@@ -78,16 +86,20 @@ class Model: NSObject {
         return false
     }
     
-    // Gets a City object for the name of
-    // the desired city. Used when the search
-    // bar is used.
-    func getCity(_ desiredCity: String) -> City? {
-        for city: City in self.cities {
-            if city.cityName.lowercased() == desiredCity {
-                return city
-            }
-        }
-        return nil
+    // Returns the amount of City objects in the array of cities.
+    func cityAmount() -> Int {
+        //print("Amount of cities in array: " + String(cities.count))
+        return cities.count
+    }
+    
+    // Returns the amount of favorites in the array of favorites.
+    func amountOfFavorites() -> Int {
+        return favorites.count
+    }
+    
+    // Returns the name of a favorited city for the given index.
+    func getFavorite(_ index: Int) -> String {
+        return favorites[index]
     }
     
     // Saves the list of the user's favorites to UserDefaults.
@@ -99,31 +111,20 @@ class Model: NSObject {
         for city: City in self.cities {
             if city.favorite {
                 filteredCities.append(city.cityName)
+                print("City: " + city.cityName + " appended to favorites")
             }
         }
         
         preferences.set(filteredCities, forKey:favoritesKey)
         
         print("Favorites saved:")
-        for favorite: String in self.favorites {
+        for favorite: String in filteredCities {
             print(favorite)
         }
         
         preferences.synchronize
     }
   
-    // Gets a City object for the tapped cell in the TableView.
-    // The cells row number corresponds to the index in array cities.
-    func getCity(_ cityToRetrieve: Int?) -> City? {
-        
-        if cityToRetrieve != nil && cities.isEmpty == false {
-            //print("City " + cities[cityToRetrieve!].city + " retrieved!")
-            return cities[cityToRetrieve!]
-        } else {
-            return nil
-        }
-    }
-    
     // Load the current value of 'favorite' from memory for
     // the corresponding city. This boolean value
     // is either true, to symbolize that its a user's favorite,

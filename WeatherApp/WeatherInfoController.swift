@@ -160,8 +160,8 @@ class WeatherInfoController: UIViewController {
     // the Model class. There is a maximum
     // limit of five favorites for the app.
     @IBAction func favorite(_ sender: Any) {
-        
-        if (self.model?.amountOfFavorites())! < 2 {
+        print(String(format: "Amount of favorites: %d", (self.model?.amountOfFavorites())!))
+        if (self.model?.amountOfFavorites())! <= 2 {
             
             if favoriteButton.currentTitle == title1 {
                 favoriteButton.setTitle(title2, for: .normal)
