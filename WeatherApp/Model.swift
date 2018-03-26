@@ -105,7 +105,7 @@ class Model: NSObject {
     // Saves the list of the user's favorites to UserDefaults.
     func save() {
         let preferences: UserDefaults = UserDefaults.standard
-        
+        preferences.removeObject(forKey: favoritesKey)
         var filteredCities = [String]()
         
         for city: City in self.cities {
@@ -127,22 +127,23 @@ class Model: NSObject {
   
     // Load the current value of 'favorite' from memory for
     // the corresponding city. This boolean value
-    // is either true, to symbolize that its a user's favorite,
+    // is either true, to symbolize that it is a user's favorite,
     // or false, i.e. not a favorite.
     // The opposite value is then saved to memory.
     func toggleFavorite(_ cityToToggle: Int?) {
         
-        if cities.isEmpty == false {
-            let city: City = cities[cityToToggle!]
+        if self.cities.isEmpty == false {
+            let city: City = self.cities[cityToToggle!]
             
             let currentPriority: Bool = city.favorite
             
             if currentPriority {
-                cities[cityToToggle!].favorite = false
+                self.cities[cityToToggle!].favorite = false
+                
             } else {
-                cities[cityToToggle!].favorite = true
+                self.cities[cityToToggle!].favorite = true
             }
-            
+            print(city.cityName + " set to " + String(self.cities[cityToToggle!].favorite))
             save()
         }
     }

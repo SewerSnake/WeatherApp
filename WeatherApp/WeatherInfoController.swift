@@ -82,10 +82,10 @@ class WeatherInfoController: UIViewController {
     // Loads an appropriate image,
     // depending on the weather.
     func loadImage() {
-        let desc: String? = self.city?.weather
+        /*let desc: String? = self.city?.weather
         if desc != nil {
             print(desc!)
-        }
+        }*/
         
         switch self.city?.weather {
         case "Sunny"?:
@@ -160,7 +160,7 @@ class WeatherInfoController: UIViewController {
     // the Model class. There is a maximum
     // limit of five favorites for the app.
     @IBAction func favorite(_ sender: Any) {
-        print(String(format: "Amount of favorites: %d", (self.model?.amountOfFavorites())!))
+        //print(String(format: "Amount of favorites: %d", (self.model?.amountOfFavorites())!))
         if (self.model?.amountOfFavorites())! <= 2 {
             
             if favoriteButton.currentTitle == title1 {

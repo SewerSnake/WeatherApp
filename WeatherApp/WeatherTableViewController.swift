@@ -41,7 +41,7 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
     override func viewDidAppear(_ animated: Bool) {
         if shouldFetchWeather {
             getFavorites()
-            tableView.reloadData()
+            
             shouldFetchWeather = false
         }
     }
