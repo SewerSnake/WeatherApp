@@ -34,7 +34,7 @@ class Model: NSObject {
     // Adds the city to the end of the array of cities.
     func addCity(_ city: City) {
         //print("City " + city.cityName + " added!")
-        cities.append(city)
+        self.cities.append(city)
     }
     
     // Gets a City object for the name of
@@ -55,7 +55,7 @@ class Model: NSObject {
         
         if cityToRetrieve != nil && cities.isEmpty == false {
             //print("City " + cities[cityToRetrieve!].city + " retrieved!")
-            return cities[cityToRetrieve!]
+            return self.cities[cityToRetrieve!]
         } else {
             return nil
         }
@@ -89,17 +89,25 @@ class Model: NSObject {
     // Returns the amount of City objects in the array of cities.
     func cityAmount() -> Int {
         //print("Amount of cities in array: " + String(cities.count))
-        return cities.count
+        return self.cities.count
     }
     
-    // Returns the amount of favorites in the array of favorites.
+    // Returns the amount of favorites, by checking all of the cities.
     func amountOfFavorites() -> Int {
-        return favorites.count
+        var amount: Int = 0
+        
+        for city: City in self.cities {
+            if city.favorite {
+                amount = amount + 1
+            }
+        }
+        
+        return amount
     }
     
     // Returns the name of a favorited city for the given index.
     func getFavorite(_ index: Int) -> String {
-        return favorites[index]
+        return self.favorites[index]
     }
     
     // Saves the list of the user's favorites to UserDefaults.
