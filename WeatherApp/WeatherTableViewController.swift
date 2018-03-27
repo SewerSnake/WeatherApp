@@ -186,5 +186,11 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
             
             weatherFetcher.model = model
         }
+        
+        if segue.identifier == "compareWeatherSegue" {
+            let weatherFetcher: WeatherCompareViewController = segue.destination as! WeatherCompareViewController
+            
+            weatherFetcher.model = model
+        }
     }
 }

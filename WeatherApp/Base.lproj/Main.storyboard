@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -62,6 +63,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="476" y="101.19940029985008"/>
+        </scene>
+        <!--Weather Compare View Controller-->
+        <scene sceneID="nRG-WK-C2D">
+            <objects>
+                <viewController id="zr2-rI-DUU" customClass="WeatherCompareViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QgW-qs-iGc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City 1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kF9-yX-bE9">
+                                <rect key="frame" x="16" y="462" width="130" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City 2" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z8Y-Md-VUd">
+                                <rect key="frame" x="229" y="462" width="130" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yJi-tQ-diY">
+                                <rect key="frame" x="154" y="526" width="66" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Compare"/>
+                                <connections>
+                                    <action selector="compare:" destination="zr2-rI-DUU" eventType="touchUpInside" id="hs1-Qn-B5d"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="df8-3b-8Q9"/>
+                    </view>
+                    <connections>
+                        <outlet property="cityOne" destination="kF9-yX-bE9" id="Jyj-ga-K8z"/>
+                        <outlet property="cityTwo" destination="z8Y-Md-VUd" id="gJ8-sZ-CVW"/>
+                        <outlet property="compareButton" destination="yJi-tQ-diY" id="KQC-zE-qsY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8cT-Bd-kIM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2712.8000000000002" y="-757.87106446776613"/>
         </scene>
         <!--Weather list-->
         <scene sceneID="go7-yt-hw1">
@@ -119,11 +164,18 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="657-8O-Zlx">
-                        <barButtonItem key="rightBarButtonItem" title="Add city" id="nrz-Bs-2rW">
-                            <connections>
-                                <segue destination="gfc-A7-tnS" kind="show" identifier="fetchWeatherSegue" id="9G0-la-A3s"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Add city" id="nrz-Bs-2rW">
+                                <connections>
+                                    <segue destination="gfc-A7-tnS" kind="show" identifier="fetchWeatherSegue" id="9G0-la-A3s"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Compare Weather" id="l1t-o8-EAo">
+                                <connections>
+                                    <segue destination="zr2-rI-DUU" kind="show" identifier="compareWeatherSegue" id="VQl-e2-GJV"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
@@ -140,13 +192,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the name of a city" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8lm-C6-hWh">
-                                <rect key="frame" x="100.5" y="306.5" width="174.5" height="30"/>
+                                <rect key="frame" x="100.5" y="328.5" width="174.5" height="30"/>
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGp-HP-Qgb">
-                                <rect key="frame" x="132" y="411.5" width="111" height="42.5"/>
+                                <rect key="frame" x="132" y="433.5" width="111" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Fetch weather">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -341,7 +393,6 @@
         <image name="weather_logo" width="1920" height="1271"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9G0-la-A3s"/>
         <segue reference="dwZ-wm-RzJ"/>
     </inferredMetricsTieBreakers>
 </document>
