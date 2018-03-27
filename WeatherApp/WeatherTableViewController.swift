@@ -70,7 +70,7 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
     func getFavorites() {
         let amountToLoad: Int = (self.model?.amountOfFavorites())!
         
-        //self.view.isUserInteractionEnabled = false
+        self.view.isUserInteractionEnabled = false
         
         for index in 0..<amountToLoad {
             
@@ -83,8 +83,8 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
                 }
             }
         }
-        
-        //self.view.isUserInteractionEnabled = true
+        tableView.reloadData()
+        self.view.isUserInteractionEnabled = true
     }
     
     // Filters what is shown in the TableView.

@@ -24,10 +24,10 @@ class Model: NSObject {
         
         if data != nil {
             self.favorites = preferences.object(forKey: favoritesKey) as! [String]
-            print("Favorites loaded:")
+            /*print("Favorites loaded:")
             for favorite: String in self.favorites {
                 print(favorite)
-            }
+            }*/
         }
     }
     
@@ -111,16 +111,16 @@ class Model: NSObject {
         for city: City in self.cities {
             if city.favorite {
                 filteredCities.append(city.cityName)
-                print("City: " + city.cityName + " appended to favorites")
+                //print("City: " + city.cityName + " appended to favorites")
             }
         }
         
         preferences.set(filteredCities, forKey:favoritesKey)
         
-        print("Favorites saved:")
+        /*print("Favorites saved:")
         for favorite: String in filteredCities {
             print(favorite)
-        }
+        }*/
         
         preferences.synchronize
     }
