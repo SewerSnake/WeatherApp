@@ -80,7 +80,19 @@ class WeatherCompareViewController: UIViewController, GKBarGraphDataSource {
     }
     
     func valueForBar(at index: Int) -> NSNumber! {
-        return 10
+        
+        switch index {
+        case 0:
+            return data1.temp as NSNumber
+        case 1:
+            return data2.temp as NSNumber
+        case 2:
+            return data1.speed as NSNumber
+        case 3:
+            return data2.speed as NSNumber
+        default:
+            return 0
+        }
     }
     
     // Assigns the appropriate title,
@@ -89,20 +101,34 @@ class WeatherCompareViewController: UIViewController, GKBarGraphDataSource {
         
         switch index {
         case 0:
-            return "Temperature 1"
+            return "Temp 1"
         case 1:
-            return "Temperature 2"
+            return "Temp 2"
         case 2:
-            return "Wind speed 1"
+            return "Speed 1"
         case 3:
-            return "Wind speed 2"
+            return "Speed 2"
         default:
             return ""
         }
     }
     
+    // Gives the temperature bars a distinct red color.
+    // Also gives the wind speed bars a distinct blue color.
     func colorForBar(at index: Int) -> UIColor! {
-        return [UIColor.red, UIColor.green][index % 2]
+        
+        switch index {
+        case 0:
+            return UIColor.red
+        case 1:
+            return UIColor.red
+        case 2:
+            return UIColor.blue
+        case 3:
+            return UIColor.blue
+        default:
+            return UIColor.white
+        }
     }
     
 }
