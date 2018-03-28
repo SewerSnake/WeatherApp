@@ -7,16 +7,17 @@
 //
 
 import UIKit
+import GraphKit
 
-class WeatherCompareViewController: UIViewController {
-
+class WeatherCompareViewController: UIViewController, GKBarGraphDataSource {
+    
     @IBOutlet weak var cityOne: UITextField!
     
     @IBOutlet weak var cityTwo: UITextField!
     
     @IBOutlet weak var compareButton: UIButton!
     
-    @IBOutlet weak var diagram: UIView!
+    @IBOutlet weak var diagram: GKBarGraph!
     
     private let error: String = "City not found"
     
@@ -28,8 +29,7 @@ class WeatherCompareViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
+        diagram.dataSource = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,6 +68,41 @@ class WeatherCompareViewController: UIViewController {
         if cityNameTwo != nil {
             self.data2 = model.getCity(cityNameTwo!.lowercased())!
         }
+        
+        self.diagram.draw()
+    }
+    
+    // The number of bars are always four;
+    // Two bars for the temperatures
+    // Two bars for the wind speeds
+    func numberOfBars() -> Int {
+        return 4
+    }
+    
+    func valueForBar(at index: Int) -> NSNumber! {
+        return 10
+    }
+    
+    // Assigns the appropriate title,
+    // depending on the index of the bar.
+    func titleForBar(at index: Int) -> String! {
+        
+        switch index {
+        case 0:
+            return "Temperature 1"
+        case 1:
+            return "Temperature 2"
+        case 2:
+            return "Wind speed 1"
+        case 3:
+            return "Wind speed 2"
+        default:
+            return ""
+        }
+    }
+    
+    func colorForBar(at index: Int) -> UIColor! {
+        return [UIColor.red, UIColor.green][index % 2]
     }
     
 }
