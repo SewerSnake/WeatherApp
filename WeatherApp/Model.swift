@@ -91,6 +91,11 @@ class Model: NSObject {
         return self.cities.count
     }
     
+    // Returns the amount of favorites in the array of favorites.
+    func favoritesInMemory() -> Int {
+        return self.favorites.count
+    }
+    
     // Returns the amount of favorites, by checking all of the cities.
     func amountOfFavorites() -> Int {
         var amount: Int = 0

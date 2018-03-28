@@ -68,7 +68,7 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
     // Ensures that the user cannot interact with
     // the app during this time.
     func getFavorites() {
-        let amountToLoad: Int = (self.model?.amountOfFavorites())!
+        let amountToLoad: Int = (self.model?.favoritesInMemory())!
         
         self.view.isUserInteractionEnabled = false
         
@@ -83,7 +83,7 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
                 }
             }
         }
-        tableView.reloadData()
+        //tableView.reloadData()
         self.view.isUserInteractionEnabled = true
     }
     
@@ -178,13 +178,13 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
             
             weatherInfo.cityIndexInMemory = Int(tappedCell.dataText!)
             
-            weatherInfo.model = model
+            weatherInfo.model = self.model
         }
         
         if segue.identifier == "fetchWeatherSegue" {
             let weatherFetcher: AddCityViewController = segue.destination as! AddCityViewController
             
-            weatherFetcher.model = model
+            weatherFetcher.model = self.model
         }
         
         if segue.identifier == "compareWeatherSegue" {

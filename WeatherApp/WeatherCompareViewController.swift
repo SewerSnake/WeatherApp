@@ -20,6 +20,10 @@ class WeatherCompareViewController: UIViewController {
     
     private let error: String = "City not found"
     
+    private var data1: City!
+    
+    private var data2: City!
+    
     var model: Model!
     
     override func viewDidLoad() {
@@ -54,9 +58,16 @@ class WeatherCompareViewController: UIViewController {
     // temperature and wind speed of
     // the two cities.
     func drawTable() {
-        let cityOne: City = model.getCity(self.cityOne.text!)!
+        let cityNameOne: String? = self.cityOne.text!
+        let cityNameTwo: String? = self.cityTwo.text!
         
-        let cityTwo: City = model.getCity(self.cityTwo.text!)!
+        if cityNameOne != nil {
+            self.data1 = model.getCity(cityNameOne!.lowercased())!
+        }
+        
+        if cityNameTwo != nil {
+            self.data2 = model.getCity(cityNameTwo!.lowercased())!
+        }
     }
     
 }
