@@ -79,17 +79,20 @@ class WeatherCompareViewController: UIViewController, GKBarGraphDataSource {
         return 4
     }
     
+    // The values in the City objects, i.e. the
+    // graph data, are scaled up to fit better
+    // in the graph.
     func valueForBar(at index: Int) -> NSNumber! {
         
         switch index {
         case 0:
-            return data1.temp as NSNumber
+            return data1.temp * 2 as NSNumber
         case 1:
-            return data2.temp as NSNumber
+            return data2.temp * 2 as NSNumber
         case 2:
-            return data1.speed as NSNumber
+            return data1.speed * 4 as NSNumber
         case 3:
-            return data2.speed as NSNumber
+            return data2.speed * 4 as NSNumber
         default:
             return 0
         }

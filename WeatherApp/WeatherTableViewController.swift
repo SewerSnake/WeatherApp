@@ -41,7 +41,7 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
     override func viewDidAppear(_ animated: Bool) {
         if shouldFetchWeather {
             getFavorites()
-            showToast("Activate search bar!")
+            showToast("Use search bar!")
             shouldFetchWeather = false
         }
     }
@@ -198,7 +198,7 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
     // equivalent to Android's toast message.
     func showToast(_ message: String) {
         
-        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height - 100, width: 170, height: 35))
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width / 2 - 75, y: self.view.frame.size.height - 100, width: 170, height: 35))
         
         toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         
@@ -218,7 +218,7 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
         
         self.view.addSubview(toastLabel)
         
-        UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 6.0, delay: 0.1, options: .curveEaseOut, animations: {
             toastLabel.alpha = 0.0
         }, completion: {(isCompleted) in
             toastLabel.removeFromSuperview()
