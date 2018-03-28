@@ -73,27 +73,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City 1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kF9-yX-bE9">
-                                <rect key="frame" x="16" y="462" width="130" height="30"/>
+                                <rect key="frame" x="16" y="556" width="130" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City 2" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z8Y-Md-VUd">
-                                <rect key="frame" x="229" y="462" width="130" height="30"/>
+                                <rect key="frame" x="229" y="556" width="130" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yJi-tQ-diY">
-                                <rect key="frame" x="154" y="526" width="66" height="30"/>
+                                <rect key="frame" x="156" y="593" width="63" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Compare"/>
                                 <connections>
                                     <action selector="compare:" destination="zr2-rI-DUU" eventType="touchUpInside" id="hs1-Qn-B5d"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4so-m7-A3a">
+                                <rect key="frame" x="16" y="64" width="343" height="484"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="df8-3b-8Q9"/>
@@ -102,6 +107,7 @@
                         <outlet property="cityOne" destination="kF9-yX-bE9" id="Jyj-ga-K8z"/>
                         <outlet property="cityTwo" destination="z8Y-Md-VUd" id="gJ8-sZ-CVW"/>
                         <outlet property="compareButton" destination="yJi-tQ-diY" id="KQC-zE-qsY"/>
+                        <outlet property="diagram" destination="4so-m7-A3a" id="UZe-aB-0kW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8cT-Bd-kIM" userLabel="First Responder" sceneMemberID="firstResponder"/>

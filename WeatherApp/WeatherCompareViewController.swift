@@ -16,6 +16,8 @@ class WeatherCompareViewController: UIViewController {
     
     @IBOutlet weak var compareButton: UIButton!
     
+    @IBOutlet weak var diagram: UIView!
+    
     private let error: String = "City not found"
     
     var model: Model!
