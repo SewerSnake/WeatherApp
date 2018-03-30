@@ -30,7 +30,8 @@ class WeatherCompareViewController: UIViewController, GKBarGraphDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         diagram.dataSource = self
-        diagram.marginBar = 30
+        diagram.labelWidth = 80
+        diagram.marginBar = 40
     }
 
     override func didReceiveMemoryWarning() {

@@ -41,9 +41,10 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
     override func viewDidAppear(_ animated: Bool) {
         if shouldFetchWeather {
             getFavorites()
-            showToast("Use search bar!")
+            
             shouldFetchWeather = false
         }
+        showToast("Use search bar!")
     }
     
     override func didReceiveMemoryWarning() {
