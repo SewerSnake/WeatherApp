@@ -27,6 +27,9 @@ class WeatherCompareViewController: UIViewController, GKBarGraphDataSource {
     
     var model: Model!
     
+    // Sets the diagrams bar width and
+    // label width larger than the default
+    // values, to accommodate for everything.
     override func viewDidLoad() {
         super.viewDidLoad()
         diagram.dataSource = self
