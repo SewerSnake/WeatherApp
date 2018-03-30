@@ -37,7 +37,7 @@ class WeatherCompareViewController: UIViewController, GKBarGraphDataSource {
         super.didReceiveMemoryWarning()
     }
     
-    // Ensures that that user has written
+    // Ensures that the user has written
     // names of cities that exist in the
     // app. The TextFields inform the user
     // if they don't exist.
@@ -55,7 +55,7 @@ class WeatherCompareViewController: UIViewController, GKBarGraphDataSource {
         }
     }
     
-    // Draws a staple diagram for the
+    // Draws a GKBarGraph for the
     // temperature and wind speed of
     // the two cities.
     func drawTable() {
