@@ -23,7 +23,7 @@ class City {
     
     // temp is reduced by 272.15 to convert it to Celsius.
     // The web API returns a Kelvin value.
-    init(lat: Float,long: Float,temp: Float,speed: Float,cityName: String,country: String,weather: String) {
+    init(_ lat: Float,_ long: Float,_ temp: Float,_ speed: Float,_ cityName: String,_ country: String,_ weather: String) {
         self.favorite = false
         
         self.lat = lat

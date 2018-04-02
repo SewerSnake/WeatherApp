@@ -87,8 +87,16 @@ class Weather {
             repeat {} while (self.success == nil)
             
             if (self.success)! {
+                let lat: Float = (self.latitude?.floatValue)!
+                let long: Float = (self.longitude?.floatValue)!
+                let temp: Float = (self.temperature?.floatValue)!
+                let speed: Float = (self.speed?.floatValue)!
                 
-                let theCity = City(lat: latitude as! Float,long: longitude as! Float,temp: temperature as! Float,speed: speed as! Float,cityName: cityName as! String,country: country as! String,weather: weatherDescription as! String)
+                let cityName: String = self.cityName as! String
+                let country: String = self.country as! String
+                let weather: String = self.weatherDescription as! String
+                
+                let theCity = City(lat, long, temp, speed, cityName, country, weather)
                 
                 return theCity
             }

@@ -36,15 +36,20 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
     
     // For each city that is among the user's favorites,
     // a request is made to get the latest weather info
-    // for those cities.
-    // Still doesn't update the TableView...
+    // for those cities. Informs the user that the
+    // favorites are available by activating the
+    // search bar.
     override func viewDidAppear(_ animated: Bool) {
         if shouldFetchWeather {
             getFavorites()
             
             shouldFetchWeather = false
             
-            showToast("Use search bar!")
+            let amountToLoad: Int = (self.model?.favoritesInMemory())!
+            
+            if amountToLoad > 0 {
+                showToast("Use search bar!")
+            }
         }
     }
     

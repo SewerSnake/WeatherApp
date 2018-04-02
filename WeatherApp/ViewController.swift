@@ -18,6 +18,10 @@ class ViewController: UIViewController {
     
     private var collision: UICollisionBehavior!
     
+    // This ViewController is the very
+    // first the user sees when the app
+    // is started. The UILabel uses
+    // UIDynamics.
     override func viewDidLoad() {
         super.viewDidLoad()
         
