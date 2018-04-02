@@ -155,7 +155,7 @@ class Model: NSObject {
             } else {
                 self.cities[cityToToggle!].favorite = true
             }
-            print(city.cityName + " set to " + String(self.cities[cityToToggle!].favorite))
+            //print(city.cityName + " set to " + String(self.cities[cityToToggle!].favorite))
             save()
         }
     }

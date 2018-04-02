@@ -40,7 +40,7 @@ class Weather {
                 (data: Data?, response: URLResponse?, error: Error?) in
                 
                 if let error = error {
-                    print("Error:\n\(error)")
+                    //print("Error:\n\(error)")
                     self.success = false
                 } else {
                     
@@ -75,7 +75,7 @@ class Weather {
                         
                     } catch let jsonError as NSError {
                         
-                        print("JSON error description: \(jsonError.description)")
+                        //print("JSON error description: \(jsonError.description)")
                         
                         self.success = false
                     }
