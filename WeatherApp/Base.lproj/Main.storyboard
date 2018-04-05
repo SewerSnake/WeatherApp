@@ -22,15 +22,28 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Weather App" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JVz-bZ-xkh">
                                 <rect key="frame" x="72" y="174" width="230" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="PTS-Gu-bD8"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="230" id="fC0-eU-wee"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="weather_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Ed5-wj-fky">
                                 <rect key="frame" x="42" y="221" width="291" height="199"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="291" id="d29-fI-Zgq"/>
+                                    <constraint firstAttribute="height" constant="199" id="efc-WY-vEj"/>
+                                </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecI-Sg-GRA">
                                 <rect key="frame" x="132" y="494" width="110" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="QHV-CQ-QtA"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="hYX-Hh-IMb"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="wGa-WY-79c"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="See weather">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -72,35 +85,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City 2" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z8Y-Md-VUd">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City 2" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z8Y-Md-VUd">
                                 <rect key="frame" x="229" y="556" width="130" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="l3K-gF-lna"/>
+                                </constraints>
                                 <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yJi-tQ-diY">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yJi-tQ-diY">
                                 <rect key="frame" x="156" y="593" width="63" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="63" id="dmA-ai-9v8"/>
+                                </constraints>
                                 <state key="normal" title="Compare"/>
                                 <connections>
                                     <action selector="compare:" destination="zr2-rI-DUU" eventType="touchUpInside" id="hs1-Qn-B5d"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4so-m7-A3a" customClass="GKBarGraph">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4so-m7-A3a" customClass="GKBarGraph">
                                 <rect key="frame" x="16" y="64" width="343" height="484"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City 1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kF9-yX-bE9">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City 1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kF9-yX-bE9">
                                 <rect key="frame" x="16" y="556" width="130" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="J3e-57-XXo"/>
+                                </constraints>
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="df8-3b-8Q9" firstAttribute="trailing" secondItem="4so-m7-A3a" secondAttribute="trailing" constant="16" id="1Ar-9d-pbA"/>
+                            <constraint firstItem="kF9-yX-bE9" firstAttribute="top" secondItem="4so-m7-A3a" secondAttribute="bottom" constant="8" id="1gm-Kf-Fmk"/>
+                            <constraint firstItem="4so-m7-A3a" firstAttribute="top" secondItem="df8-3b-8Q9" secondAttribute="top" id="7fH-Tl-Q1b"/>
+                            <constraint firstItem="z8Y-Md-VUd" firstAttribute="top" secondItem="4so-m7-A3a" secondAttribute="bottom" constant="8" id="Aaa-yM-K4K"/>
+                            <constraint firstItem="yJi-tQ-diY" firstAttribute="bottom" secondItem="df8-3b-8Q9" secondAttribute="bottom" id="Ae5-xw-xMq"/>
+                            <constraint firstItem="df8-3b-8Q9" firstAttribute="bottom" secondItem="kF9-yX-bE9" secondAttribute="bottom" constant="37" id="Ftk-Pp-MgV"/>
+                            <constraint firstItem="df8-3b-8Q9" firstAttribute="trailing" secondItem="z8Y-Md-VUd" secondAttribute="trailing" constant="16" id="Lye-qv-A8W"/>
+                            <constraint firstItem="z8Y-Md-VUd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QgW-qs-iGc" secondAttribute="leading" constant="20" symbolic="YES" id="TPd-5u-0GZ"/>
+                            <constraint firstItem="4so-m7-A3a" firstAttribute="leading" secondItem="df8-3b-8Q9" secondAttribute="leading" constant="16" id="ctZ-41-X1F"/>
+                            <constraint firstAttribute="trailing" secondItem="kF9-yX-bE9" secondAttribute="trailing" constant="229" id="e7N-EQ-j3v"/>
+                            <constraint firstItem="kF9-yX-bE9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="df8-3b-8Q9" secondAttribute="leading" id="hgN-kb-WzF"/>
+                            <constraint firstItem="z8Y-Md-VUd" firstAttribute="top" secondItem="4so-m7-A3a" secondAttribute="bottom" constant="8" id="mKe-fq-6aS"/>
+                            <constraint firstItem="yJi-tQ-diY" firstAttribute="centerX" secondItem="df8-3b-8Q9" secondAttribute="centerX" id="z67-jh-s1h"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="df8-3b-8Q9"/>
                     </view>
                     <connections>
@@ -199,12 +232,20 @@
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the name of a city" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8lm-C6-hWh">
                                 <rect key="frame" x="100.5" y="328.5" width="174.5" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="174.5" id="tpM-86-vtx"/>
+                                </constraints>
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGp-HP-Qgb">
                                 <rect key="frame" x="132" y="433.5" width="111" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="4bw-pl-juh"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="111" id="iik-L7-y9X"/>
+                                    <constraint firstAttribute="height" constant="20.5" id="o38-fv-bnW"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Fetch weather">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
