@@ -90,7 +90,7 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
                 }
             }
         }
-        //tableView.reloadData()
+       
         self.view.isUserInteractionEnabled = true
     }
     
