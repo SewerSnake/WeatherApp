@@ -27,10 +27,10 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
         
         createSearchBar()
         
+        shouldFetchWeather = true
+        
         if model == nil {
             self.model = Model()
-            
-            shouldFetchWeather = true
         }
     }
     
@@ -45,11 +45,11 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
             
             shouldFetchWeather = false
             
-            let amountToLoad: Int = (self.model?.favoritesInMemory())!
+            //let amountToLoad: Int = (self.model?.favoritesInMemory())!
             
-            if amountToLoad > 0 {
+            /*if amountToLoad > 0 {
                 showToast("Use search bar!")
-            }
+            }*/
         }
     }
     
@@ -87,6 +87,7 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
                 
                 if success! {
                     self.model?.toggleFavorite(index)
+                    self.tableView.reloadData()
                 }
             }
         }
