@@ -128,7 +128,7 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
 
     // Only one section is needed.
     override func numberOfSections(in tableView: UITableView) -> Int {
-      
+
         return 1
     }
 
@@ -146,7 +146,6 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
     // The name and temperature of the city object
     // are loaded into the cell's labels.
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "location", for: indexPath) as! WeatherCell
         
         let city: City?
